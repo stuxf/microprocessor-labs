@@ -8,8 +8,6 @@
  */
 
 module lab1_sx(
-    // 48 MHz clock on FPGA
-    input logic clk,
     // the four DIP switches (on the board, SW6)
     input logic [3:0] s,
     // 3 LEDs (you may use the on-board LEDs)
@@ -18,14 +16,11 @@ module lab1_sx(
     output logic [6:0] seg
 );
 
-    // Changes synchronously with the clock!
-    always_ff @(posedge clk) begin
-        // led[0] can be modeled as XOR of S1 and S0 switches
-        led[0] = s[1] ^ s[0];
+    // led[0] can be modeled as XOR of S1 and S0 switches
+    assign led[0] = s[1] ^ s[0];
 
-        // led[1] can be modeled as AND of S2 and S3 switches
-        led[1] = s[3] & s[2];
-    end
+    // led[1] can be modeled as AND of S2 and S3 switches
+    assign led[1] = s[3] & s[2];
 
     // TODO: led[2] blinks at every 2.4 hz. 
 
