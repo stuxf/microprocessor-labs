@@ -25,7 +25,7 @@ module lab1_sx(
 
     // TODO: led[2] blinks at every 2.4 hz. 
 
-    // TODO: seven segment decoder here
+    // seven segment decoder here
 	seven_segment display (
         s,
         seg
