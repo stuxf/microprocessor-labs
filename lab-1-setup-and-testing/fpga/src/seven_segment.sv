@@ -18,7 +18,7 @@ module seven_segment(
     // Currently does not support decimal points 
     // abcdefg is referring to the following layout
     // https://commons.wikimedia.org/wiki/File:7-segment_labeled.svg
-    // 0 is off, 1 is on
+    // 0 is on, 1 is off
 
     always_comb
         case(in)                   // abcdefg
@@ -30,7 +30,7 @@ module seven_segment(
             4'h5:       segments = 7'b0100100;
             4'h6:       segments = 7'b0100000;
             4'h7:       segments = 7'b0001111;
-            4'h8:       segments = 7'b1111111;
+            4'h8:       segments = 7'b0000000;
             4'h9:       segments = 7'b0001100;
             4'ha:       segments = 7'b0001000;
             4'hb:       segments = 7'b1100000;
