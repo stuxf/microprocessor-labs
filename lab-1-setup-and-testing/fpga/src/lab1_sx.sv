@@ -5,6 +5,7 @@
  * This is the top level module for the first lab
  * Its purpose is to allow for us to control a seven segment display
  * We control the seven segment display using 4 DIP switches
+ * It also includes logic for some LEDS to light up depending on switches
  */
 
 module lab1_sx(
@@ -25,6 +26,11 @@ module lab1_sx(
     // TODO: led[2] blinks at every 2.4 hz. 
 
     // TODO: seven segment decoder here
+	seven_segment display (
+        s,
+        seg
+	);
+	
 
 
 endmodule
