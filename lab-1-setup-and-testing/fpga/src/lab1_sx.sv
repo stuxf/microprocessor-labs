@@ -28,7 +28,7 @@ module lab1_sx(
     // led[2] blinks at every 2.4(4) hz.
     
     logic int_osc;
-    logic [11:0] counter;
+    logic [11:0] counter = 12'd0;
     
     // Internal low-speed oscillator
     LSOSC OSCInst1 (
@@ -43,7 +43,7 @@ module lab1_sx(
     // Counter
     always_ff @(posedge int_osc) begin
         if (reset == 0) counter <= 0;
-        else            counter <= counter + 1;
+        else            counter <= 12'(counter + 1);
     end
 
     // seven segment decoder here
