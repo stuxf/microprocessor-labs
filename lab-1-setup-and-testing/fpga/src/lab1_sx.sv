@@ -9,6 +9,8 @@
  */
 
 module lab1_sx(
+    // reset
+    input logic reset,
     // the four DIP switches (on the board, SW6)
     input logic [3:0] s,
     // 3 LEDs (you may use the on-board LEDs)
@@ -40,7 +42,8 @@ module lab1_sx(
 
     // Counter
     always_ff @(posedge int_osc) begin
-        counter <= counter + 1;
+        if (reset == 0) counter <= 0;
+        else            counter <= counter + 1;
     end
 
     // seven segment decoder here
