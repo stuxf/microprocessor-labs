@@ -28,7 +28,7 @@ module lab1_sx(
     // led[2] blinks at every 2.4(4) hz.
     
     logic int_osc;
-    logic [11:0] counter = 12'd0;
+    logic [11:0] counter;
     
     // Internal low-speed oscillator
     LSOSC OSCInst1 (
