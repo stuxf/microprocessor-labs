@@ -1,0 +1,16 @@
+$date
+	Thu Sep  5 20:45:04 2024
+$end
+$version
+	Questa Lattice OEM Edition 2024.2
+$end
+$timescale
+	1ns
+$end
+
+$scope module seven_segment_tb $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+$end

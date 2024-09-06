@@ -1,0 +1,83 @@
+# //  Questa Lattice OEM Edition-64
+# //  Version 2024.2 linux_x86_64 May 20 2024
+# //
+# // Unpublished work. Copyright 2024 Siemens
+# //
+# // This material contains trade secrets or otherwise confidential information
+# // owned by Siemens Industry Software Inc. or its affiliates (collectively,
+# // "SISW"), or its licensors. Access to and use of this information is strictly
+# // limited as set forth in the Customer's applicable agreements with SISW.
+# //
+# // This material may not be copied, distributed, or otherwise disclosed outside
+# // of the Customer's facilities without the express written permission of SISW,
+# // and may not be used in any way not expressly authorized by SISW.
+# //
+vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_testvectors.tv
+# Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 20:43:52 on Sep 05,2024
+# vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_testvectors.tv 
+# -- Compiling module seven_segment
+# -- Compiling module seven_segment_tb
+# ** Error: (vlog-13069) /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_testvectors.tv(2): near "00000000001": syntax error, unexpected INTEGER NUMBER.
+# End time: 20:43:52 on Sep 05,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv
+# Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 20:44:00 on Sep 05,2024
+# vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv 
+# -- Compiling module seven_segment
+# -- Compiling module seven_segment_tb
+# 
+# Top level modules:
+# 	seven_segment_tb
+# End time: 20:44:00 on Sep 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vsim work.seven_segment_tb -L iCE40UP
+# vsim work.seven_segment_tb -L iCE40UP 
+# Start time: 20:44:56 on Sep 05,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt2
+# Loading sv_std.std
+# Loading work.seven_segment_tb(fast)
+step -over
+step -over
+# ** Warning: (vsim-7) Failed to open readmem file "seven_segment_testvectors.tv" in read mode.
+# No such file or directory. (errno = ENOENT)    : /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv(31)
+#    Time: 0 ns  Iteration: 0  Instance: /seven_segment_tb
+step -over
+step -over
+step -over
+step -over
+# Next activity is in 1 ns.
+step -over
+step -over
+# Next activity is in 4 ns.
+step -over
+# Next activity is in 5 ns.
+step -over
+step -over
+# Next activity is in 1 ns.
+step -over
+step -over
+# Next activity is in 4 ns.
+step -over
+# Next activity is in 5 ns.
+step -over
+step -over
+# Next activity is in 1 ns.
+step -over
+step -over
+# Next activity is in 4 ns.
+step -over
+# Next activity is in 2 ns.
+step -over
+# Next activity is in 3 ns.
+step -over
+step -over
+# Next activity is in 1 ns.
+# Load canceled
+run 1000
+#          1 tests completed with          0 erorrs.
+# ** Note: $finish    : /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv(65)
+#    Time: 35 ns  Iteration: 1  Instance: /seven_segment_tb
+# End time: 20:46:02 on Sep 05,2024, Elapsed time: 0:01:06
+# Errors: 0, Warnings: 1

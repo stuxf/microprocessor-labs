@@ -1,0 +1,1 @@
+/var/home/user/lscc/radiant/2024.1/questasim/linux_x86_64/VisualizerRls/bin/viscom -nolock -quiet -jmem_size 393216 work.seven_segment_tb -quiet -auto_acc_if_foreign -work work -allow_unnamed -o _opt1 -id 1-000ae431a4f1-66da78c4-272e3-2e37c +__design_bin_path+/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/radiant_project
