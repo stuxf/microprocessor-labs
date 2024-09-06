@@ -24,12 +24,10 @@ module lab1_sx(
 
     // led[1] can be modeled as AND of S2 and S3 switches
     assign led[1] = s[3] & s[2];
-
-    // led[2] blinks at every 2.4(4) hz.
     
     logic int_osc;
-    logic [11:0] counter;
-    
+    logic out_clk;
+
     // Internal low-speed oscillator
     LSOSC OSCInst1 (
         // Enable low speed clock output
@@ -40,11 +38,6 @@ module lab1_sx(
         .CLKLF(int_osc)
     );
 
-    // Counter
-    always_ff @(posedge int_osc) begin
-        if (reset == 0) counter <= 0;
-        else            counter <= 12'(counter + 1);
-    end
 
     // seven segment decoder here
 	seven_segment display (
@@ -52,6 +45,14 @@ module lab1_sx(
         seg
 	);
 
-    assign led[2] = counter[11];
+    // led[2] blinks at every 2.4(4) hz.
+
+    clk_div fractional_clock (
+        int_osc,
+        reset,
+        out_clk
+    );
+
+    assign led[2] = out_clk;
 
 endmodule
