@@ -1,0 +1,95 @@
+m255
+K4
+z2
+!s12c _opt2
+Z0 !s99 nomlopt
+!s12c _opt1
+R0
+!s11f MIXED_VERSIONS
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z1 d/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/radiant_project
+T_opt1
+!s110 1725593796
+VH;<7KFmTBg9<?n?iWZV^L3
+Z2 04 16 4 work seven_segment_tb fast 0
+=1-000ae431a4f1-66da78c4-272e3-2e37c
+R0
+Z3 !s12f OEM25U2 
+Z4 !s12b OEM100
+Z5 !s124 OEM100
+Z6 !s135 nogc
+o-quiet -auto_acc_if_foreign -work work
+Z7 tCvgOpt 0
+n@_opt1
+Z8 OL;O;2024.2;79
+R1
+T_opt2
+!s110 1725594000
+VKQBEh]H87`6FZ:aMJX^?a3
+R2
+=1-000ae431a4f1-66da7990-10f24-2ebb0
+R0
+R3
+R4
+R5
+R6
+o-quiet -auto_acc_if_foreign -work work -L iCE40UP
+R7
+n@_opt2
+R8
+R1
+vseven_segment
+Z9 2/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv
+Z10 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z11 !s110 1725594240
+!i10b 1
+!s100 1jlURTzLd]:^ibEDObUFN0
+IUG2[^oP3zVR=4:M]R2B:C0
+S1
+R1
+w1725340370
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv
+!i122 10
+L0 9 35
+Z12 VDg1SIo80bB@j0V0VzS_@n1
+Z13 OL;L;2024.2;79
+r1
+!s85 0
+31
+Z14 !s108 1725594240.000000
+!s107 /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv|
+Z15 !s90 -reportprogress|300|-work|work|/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv|
+!i113 0
+Z16 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R7
+vseven_segment_tb
+R9
+R10
+R11
+!i10b 1
+!s100 @OI0nVdGJ2UV;VOCjfIWn2
+IG`M1LO<l=WccH>>JGWa6O0
+S1
+R1
+w1725593353
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv
+!i122 10
+L0 5 68
+R12
+R13
+r1
+!s85 0
+31
+R14
+Z17 !s107 /var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-1-setup-and-testing/fpga/src/seven_segment.sv|
+R15
+!i113 0
+R16
+R7
