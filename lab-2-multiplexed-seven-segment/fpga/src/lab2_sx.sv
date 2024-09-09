@@ -26,11 +26,32 @@ module lab2_sx(
     output logic [4:0] led
 );
 
+    logic int_osc;
+    logic out_clk;
+
 	// seven segment decoder here
 	seven_segment display (
 		s1,
 		seg
-	);	
-	
+	);
+
+    // Internal high-speed oscillator
+    // 0b11 makes it run at 6 MHz
+    HSOSC #(.CLKHF_DIV ("0b11")) OSCInst1 (
+        // Enable low speed clock output
+        .CLKHFEN(1'b1),
+        // Power up the oscillator
+        .CLKHFPU(1'b1),
+        // Oscillator Clock Output
+        .CLKHF(int_osc)
+    );
+
+    fractional_clk_div sixty_hz(
+        int_osc,
+        reset,
+        out_clk
+    );
+
+    assign led[0] = out_clk;
 
 endmodule
