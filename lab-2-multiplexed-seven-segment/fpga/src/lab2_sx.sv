@@ -9,7 +9,7 @@
  * We use a time based MUX in order to alternate displays
  */
 
-module lab_2_sx(
+module lab2_sx(
     // Reset Switch
     input logic reset,
     // Four DIP switches on the board
@@ -25,5 +25,12 @@ module lab_2_sx(
     // What the LED represents
     output logic [4:0] led
 );
- 
+
+	// seven segment decoder here
+	seven_segment display (
+		s1,
+		seg
+	);	
+	
+
 endmodule
