@@ -13,14 +13,14 @@ module fractional_clk_div(
     output logic out_clk
 );
 
-    logic counter;
+    integer counter;
 
     always_ff @(posedge clk) begin
         if (reset == 0) begin
             counter <= 1;
             out_clk <= 0;
         end
-        if (counter == 1000) begin
+        if (counter == 100000) begin
             out_clk <= ~out_clk;
             counter <= 1;
         end else begin
