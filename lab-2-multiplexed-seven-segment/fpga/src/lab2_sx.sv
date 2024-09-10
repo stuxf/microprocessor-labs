@@ -54,7 +54,7 @@ module lab2_sx(
 
     always_ff @(posedge out_clk) begin
         if (reset == 0) select <= 0;
-        else select <= !select
+        else select <= !select;
     end
 
     // Take divided clock and select
