@@ -72,8 +72,10 @@ module lab2_sx(
 		seg
 	);
 
+    // LEDs should display sum
     assign leds = s1 + s2;
 
+    // Drive the transistors alternately
     assign on1 = select;
     assign on2 = !select;
 

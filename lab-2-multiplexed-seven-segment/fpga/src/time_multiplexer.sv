@@ -14,7 +14,9 @@ module time_multiplexer(
     output logic [3:0] out
 );
 
+    // Change on clock
     always_ff @(posedge clk) begin
+        // Basic multiplexer with select signal
         out <= select ? in1 : in2;
     end
 
