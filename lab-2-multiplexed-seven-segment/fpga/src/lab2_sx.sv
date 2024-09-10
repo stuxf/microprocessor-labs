@@ -41,7 +41,7 @@ module lab2_sx(
         .CLKHF(int_osc)
     );
 
-    // Fractional clock divider, outputs a 60 hz clock
+    // Fractional clock divider, outputs a 240 hz clock
     fractional_clk_div sixty_hz(
         int_osc,
         reset,
