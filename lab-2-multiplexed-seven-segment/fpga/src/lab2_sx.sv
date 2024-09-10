@@ -26,14 +26,10 @@ module lab2_sx(
     output logic [4:0] led
 );
 
+
+    // Logic for the clocks
     logic int_osc;
     logic out_clk;
-
-	// seven segment decoder here
-	seven_segment display (
-		s1,
-		seg
-	);
 
     // Internal high-speed oscillator
     // 0b11 makes it run at 6 MHz
@@ -46,12 +42,30 @@ module lab2_sx(
         .CLKHF(int_osc)
     );
 
+    // Fractional clock divider, outputs a 60 hz clock
     fractional_clk_div sixty_hz(
         int_osc,
         reset,
         out_clk
     );
 
-    assign led[0] = out_clk;
+    // Logic for the time multiplexer
+    logic select;
+    logic [3:0] out;
+
+    // Take divided clock and select
+    time_multiplexer tmux (
+        out_clk,
+        select,
+        s1,
+        s2,
+        out
+    );
+
+	// seven segment decoder here
+	seven_segment display (
+		out,
+		seg
+	);
 
 endmodule
