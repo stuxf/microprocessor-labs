@@ -69,4 +69,7 @@ module lab2_sx(
 
     assign leds = s1 + s2;
 
+    assign on1 = select;
+    assign on2 = !select;
+
 endmodule
