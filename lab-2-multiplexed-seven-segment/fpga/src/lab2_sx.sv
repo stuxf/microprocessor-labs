@@ -52,6 +52,11 @@ module lab2_sx(
     logic select;
     logic [3:0] out;
 
+    always_ff @(posedge out_clk) begin
+        if (reset == 0) select <= 0;
+        else select <= !select
+    end
+
     // Take divided clock and select
     time_multiplexer tmux (
         out_clk,
