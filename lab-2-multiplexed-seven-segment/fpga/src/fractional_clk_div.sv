@@ -20,7 +20,7 @@ module fractional_clk_div(
             counter <= 1;
             out_clk <= 0;
         end
-        if (counter == 100000) begin
+        if (counter >= 25000) begin
             out_clk <= ~out_clk;
             counter <= 1;
         end else begin
