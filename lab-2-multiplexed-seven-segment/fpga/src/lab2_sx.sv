@@ -68,4 +68,6 @@ module lab2_sx(
 		seg
 	);
 
+    assign leds = s1 + s2;
+
 endmodule
