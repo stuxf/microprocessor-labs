@@ -23,9 +23,8 @@ module lab2_sx(
     // What the segments are
     output logic [6:0] seg,
     // What the LED represents
-    output logic [4:0] led
+    output logic [4:0] leds
 );
-
 
     // Logic for the clocks
     logic int_osc;
