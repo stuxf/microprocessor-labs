@@ -20,6 +20,18 @@ module lab3_sx(
     // For keypad matrix
     input logic [3:0] rows,
     output logic [3:0] cols
- );
+);
 
- endmodule
+    logic int_osc;
+
+    // Internal low-speed oscillator
+    LSOSC OSCInst1 (
+        // Enable low speed clock output
+        .CLKLFEN(1'b1),
+        // Power up the oscillator
+        .CLKLFPU(1'b1),
+        // Oscillator Clock Output
+        .CLKLF(int_osc)
+    );
+
+endmodule
