@@ -8,7 +8,6 @@
  */
 
 module keypad_decoder(
-    input logic clk,
     input logic [1:0] row,
     input logic [1:0] col,
     output logic [3:0] key
