@@ -93,15 +93,13 @@ module scanner(
             pressed_col <= '0;
         end 
         else begin
-            if (state != debounce && nextstate == debounce) begin
-                case (state)
-                    col0_check: pressed_col <= 2'd0;
-                    col1_check: pressed_col <= 2'd1;
-                    col2_check: pressed_col <= 2'd2;
-                    col3_check: pressed_col <= 2'd3;
-                    default: pressed_col <= pressed_col;
-                endcase
-            end
+            case (state)
+                col0_check: if ($onehot(stable_rows)) pressed_col <= 2'd0;
+                col1_check: if ($onehot(stable_rows)) pressed_col <= 2'd1;
+                col2_check: if ($onehot(stable_rows)) pressed_col <= 2'd2;
+                col3_check: if ($onehot(stable_rows)) pressed_col <= 2'd3;
+                default: pressed_col <= pressed_col;
+            endcase
         end
     end
 
@@ -111,7 +109,7 @@ module scanner(
             pressed_row <= 2'd0;
         end 
         else begin
-            if (state != debounce && nextstate == debounce) begin
+            if ($onehot(stable_rows)) begin
                 case (stable_rows)
                     4'b0001: pressed_row <= 2'd0;
                     4'b0010: pressed_row <= 2'd1;
@@ -134,14 +132,12 @@ module scanner(
 
     // output logic
     always_comb begin
-        if (state == debounce || state == pressed) begin
-            cols = (4'b0001 << pressed_col);
-        end
         case (state)
             col0:       cols = 4'b0001;
             col1:       cols = 4'b0010;
             col2:       cols = 4'b0100;
             col3:       cols = 4'b1000;
+            debounce, pressed: cols = (4'b0001 << pressed_col);
             default:    cols = 4'b0000;
         endcase
     end
