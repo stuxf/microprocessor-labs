@@ -130,7 +130,7 @@ module scanner(
         else if (state != debounce && nextstate == debounce)
             counter <= '0;
         else if (state == debounce && counter < 50)
-            counter <= counter + 1;
+            counter <= counter + '1;
 
     // output logic
     always_comb begin

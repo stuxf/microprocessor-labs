@@ -34,4 +34,44 @@ module lab3_sx(
         .CLKLF(int_osc)
     );
 
+    // Internal Logic
+    logic [1:0] pressed_row;
+    logic [1:0] pressed_col;
+    logic press;
+
+    // Instantiate Scanner Circuit
+    scanner keypad(
+        int_osc,
+        reset,
+        rows,
+        cols,
+        pressed_row,
+        pressed_col,
+        press
+    );
+
+    logic [3:0] key;
+
+    keypad_decoder decoder(
+        pressed_row,
+        pressed_col,
+        key
+    );
+
+    logic [3:0] digit_to_display;
+
+    // Every time a key is pressed
+    always_ff @(posedge press) begin
+        digit_to_display <= key;
+    end
+
+    // seven segment decoder here
+	seven_segment display (
+        digit_to_display,
+        seg
+	);
+
+    assign on1 = 1;
+    assign on2 = 1;
+
 endmodule
