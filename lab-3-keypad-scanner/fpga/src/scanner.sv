@@ -45,7 +45,7 @@ module scanner(
 
     // State register
     always_ff @(posedge clk)
-        if (reset)  state <= col0;
+        if (reset == 0)  state <= col0;
         else        state <= nextstate;
 
     // Next state register
@@ -135,14 +135,14 @@ module scanner(
     // output logic
     always_comb begin
         if (state == debounce || state == pressed) begin
-            cols = (4'b0001 << pressed_col);
+            cols = ~(4'b0001 << pressed_col);
         end
         case (state)
-            col0:       cols = 4'b0001;
-            col1:       cols = 4'b0010;
-            col2:       cols = 4'b0100;
-            col3:       cols = 4'b1000;
-            default:    cols = 4'b0000;
+            col0:       cols = ~(4'b0001);
+            col1:       cols = ~(4'b0010);
+            col2:       cols = ~(4'b0100);
+            col3:       cols = ~(4'b1000);
+            default:    cols = ~(4'b0000);
         endcase
     end
 
