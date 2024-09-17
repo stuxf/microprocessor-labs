@@ -42,8 +42,8 @@ module lab3_sx(
     // Instantiate Scanner Circuit
     scanner keypad(
         int_osc,
-        !reset,
-        ~rows,
+        reset,
+        rows,
         cols,
         pressed_row,
         pressed_col,
