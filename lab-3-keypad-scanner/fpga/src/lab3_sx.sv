@@ -19,7 +19,9 @@ module lab3_sx(
     output logic [6:0] seg,
     // For keypad matrix
     input logic [3:0] rows,
-    output logic [3:0] cols
+    output logic [3:0] cols,
+    // Debug LEDs
+    output logic [2:0] help
 );
 
     logic int_osc;
@@ -43,7 +45,7 @@ module lab3_sx(
     scanner keypad(
         int_osc,
         reset,
-        rows,
+        ~rows,
         cols,
         pressed_row,
         pressed_col,
@@ -60,9 +62,21 @@ module lab3_sx(
 
     logic [3:0] digit_to_display;
 
-    // Every time a key is pressed
-    always_ff @(posedge press) begin
-        digit_to_display <= key;
+    // Synchronize press signal and use it as an enable
+    logic press_sync;
+    always_ff @(posedge int_osc) begin
+        if (reset == 0)
+            press_sync <= 1'b0;
+        else
+            press_sync <= press;
+    end
+
+    // Update digit_to_display using synchronized press as enable
+    always_ff @(posedge int_osc) begin
+        if (reset == 0)
+            digit_to_display <= 4'b0;
+        else if (press_sync)
+            digit_to_display <= key;
     end
 
     // seven segment decoder here
@@ -73,5 +87,10 @@ module lab3_sx(
 
     assign on1 = 1;
     assign on2 = 1;
+
+    assign help[0] = press;
+
+    assign help[1] = rows[0];
+    assign help[2] = rows[1];
 
 endmodule
