@@ -36,6 +36,19 @@ module lab3_sx(
         .CLKLF(int_osc)
     );
 
+    // Fractional Clock Divider for Debugging Purposes
+
+    // Fractional clock divider, outputs a 240 hz clock
+
+    logic out_clk;
+
+    fractional_clk_div one_hz(
+        int_osc,
+        reset,
+        out_clk
+    );
+
+
     // Internal Logic
     logic [1:0] pressed_row;
     logic [1:0] pressed_col;
@@ -43,7 +56,7 @@ module lab3_sx(
 
     // Instantiate Scanner Circuit
     scanner keypad(
-        int_osc,
+        out_clk,
         reset,
         ~rows,
         cols,
@@ -64,7 +77,7 @@ module lab3_sx(
 
     // Synchronize press signal and use it as an enable
     logic press_sync;
-    always_ff @(posedge int_osc) begin
+    always_ff @(posedge out_clk) begin
         if (reset == 0)
             press_sync <= 1'b0;
         else
@@ -72,7 +85,7 @@ module lab3_sx(
     end
 
     // Update digit_to_display using synchronized press as enable
-    always_ff @(posedge int_osc) begin
+    always_ff @(posedge out_clk) begin
         if (reset == 0)
             digit_to_display <= 4'b0;
         else if (press_sync)

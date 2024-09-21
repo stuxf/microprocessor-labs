@@ -36,7 +36,7 @@ module scanner_tb();
     // At the start of sim, pulse reset line
     // Also load test vectors
     initial begin
-        reset = 1; #27; reset = 0;
+        reset = 0; #27; reset = 1;
         rows = 4'b0000;
     end
 
