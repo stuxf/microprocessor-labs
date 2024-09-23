@@ -58,7 +58,7 @@ module lab3_sx(
     scanner keypad(
         out_clk,
         reset,
-        ~rows,
+        rows,
         cols,
         pressed_row,
         pressed_col,
