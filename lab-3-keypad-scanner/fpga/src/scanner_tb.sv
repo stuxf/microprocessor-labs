@@ -42,7 +42,7 @@ module scanner_tb();
 
     initial begin
         // Wait until next clock cycle
-        #102;
+        #104;
 
         rows = 4'b0010;
 
