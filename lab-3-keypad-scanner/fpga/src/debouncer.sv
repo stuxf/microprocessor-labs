@@ -11,7 +11,7 @@ module debouncer(
     input logic clk,
     input logic reset,
     input logic [3:0] num,
-    input logic [3:0] pressed,
+    input logic pressed,
     output logic debounce_pressed
 );
     logic [5:0] counter;
@@ -22,7 +22,7 @@ module debouncer(
             counter <= '0;
             last_num <= '0;
             debounce_pressed <= 0;
-        end else if (num != last_num) begin
+        end else if (num != last_num || pressed == 0) begin
             counter <= '0;
             last_num <= num;
             debounce_pressed <= 0;

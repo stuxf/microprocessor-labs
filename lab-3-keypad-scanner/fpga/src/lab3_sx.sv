@@ -72,10 +72,19 @@ module lab3_sx(
     logic [3:0] num1;
     logic [3:0] num2;
 
+    logic debounce_pressed;
+    debouncer debounce(
+        int_osc,
+        reset,
+        key,
+        press,
+        debounce_pressed
+    );
+
     two_digits digit_register(
         int_osc,
         reset,
-        press,
+        debounce_pressed,
         key,
         num1,
         num2
