@@ -27,6 +27,9 @@
         <Source name="../src/time_multiplexer.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
         </Source>
+        <Source name="../src/two_digits.sv" type="Verilog" type_short="Verilog">
+            <Options VerilogStandard="System Verilog"/>
+        </Source>
         <Source name="pins.pdc" type="Physical Constraints File" type_short="PDC">
             <Options/>
         </Source>

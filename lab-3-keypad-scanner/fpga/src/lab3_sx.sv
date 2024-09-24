@@ -69,31 +69,24 @@ module lab3_sx(
         key
     );
 
-    logic [3:0] digit_to_display;
+    logic [3:0] num1;
+    logic [3:0] num2;
 
-    // Synchronize press signal and use it as an enable
-    logic press_sync;
-    always_ff @(posedge out_clk) begin
-        if (reset == 0)
-            press_sync <= 1'b0;
-        else
-            press_sync <= press;
-    end
-
-    // Update digit_to_display using synchronized press as enable
-    always_ff @(posedge out_clk) begin
-        if (reset == 0)
-            digit_to_display <= 4'b0;
-        else if (press_sync)
-            digit_to_display <= key;
-    end
+    two_digits digit_register(
+        int_osc,
+        reset,
+        press,
+        key,
+        num1,
+        num2
+    );
 
     // seven segment display here
     two_ssd display(
         reset,
         out_clk,
-        key,
-        key,
+        num1,
+        num2,
         on1,
         on2,
         seg
