@@ -44,17 +44,8 @@ module scanner(
 
     // State register
     always_ff @(posedge clk)
-        if (reset == 0) begin
-            state <= col0;
-            hold_timer <= 2'b00;
-        end else begin
-            state <= nextstate;
-            if (state == col0_hold || state == col1_hold || state == col2_hold || state == col3_hold) begin
-                if (hold_timer < 2'b11)
-                    hold_timer <= hold_timer + 1;
-            end else
-                hold_timer <= 2'b00;
-        end
+        if (reset == 0) state <= col0;
+        else            state <= nextstate;
 
     // Next state register
     always_comb begin
@@ -109,6 +100,19 @@ module scanner(
                 4'b1000: pressed_row <= 2'd3;
                 default: pressed_row <= pressed_row;
             endcase
+        end
+    end
+
+    // Timer logic
+    always_ff @(posedge clk) begin
+        if (reset == 0) begin
+            hold_timer <= 2'b00;
+        end else if (state == col0_hold || state == col1_hold || state == col2_hold || state == col3_hold) begin
+            if (hold_timer < 2'b11) begin
+                hold_timer <= hold_timer + '1;
+            end
+        end else begin
+            hold_timer <= 2'b00;
         end
     end
 
