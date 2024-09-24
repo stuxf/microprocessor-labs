@@ -36,13 +36,9 @@ module lab3_sx(
         .CLKLF(int_osc)
     );
 
-    // Fractional Clock Divider for Debugging Purposes
-
-    // Fractional clock divider, outputs a 240 hz clock
-
+    // Fractional clock divider, outputs a 250 hz clock
     logic out_clk;
-
-    fractional_clk_div one_hz(
+    fractional_clk_div tmux_clock(
         int_osc,
         reset,
         out_clk
@@ -56,7 +52,7 @@ module lab3_sx(
 
     // Instantiate Scanner Circuit
     scanner keypad(
-        out_clk,
+        int_osc,
         reset,
         rows,
         cols,
@@ -92,18 +88,20 @@ module lab3_sx(
             digit_to_display <= key;
     end
 
-    // seven segment decoder here
-	seven_segment display (
-        digit_to_display,
+    // seven segment display here
+    two_ssd display(
+        reset,
+        out_clk,
+        key,
+        key,
+        on1,
+        on2,
         seg
-	);
-
-    assign on1 = 1;
-    assign on2 = 1;
+    );
 
     assign help[0] = press;
 
-    assign help[1] = rows[0];
-    assign help[2] = rows[1];
+    assign help[1] = rows[2];
+    assign help[2] = rows[3];
 
 endmodule
