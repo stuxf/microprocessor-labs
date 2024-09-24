@@ -67,19 +67,19 @@ module scanner(
                             nextstate = col2_hold;
                         end
                         else nextstate = col0;
-            col0_hold: if (stable_rows[pressed_row] && hold_timer < 2'b11) begin
+            col0_hold: if (stable_rows[pressed_row] || hold_timer < 2'b11) begin
                             nextstate = col0_hold;
                        end
                        else nextstate = col1;
-            col1_hold: if (stable_rows[pressed_row] && hold_timer < 2'b11) begin
+            col1_hold: if (stable_rows[pressed_row] || hold_timer < 2'b11) begin
                             nextstate = col1_hold;
                        end
                        else nextstate = col2;
-            col2_hold: if (stable_rows[pressed_row] && hold_timer < 2'b11) begin
+            col2_hold: if (stable_rows[pressed_row] || hold_timer < 2'b11) begin
                             nextstate = col2_hold;
                        end
                        else nextstate = col3;
-            col3_hold: if (stable_rows[pressed_row] && hold_timer < 2'b11) begin
+            col3_hold: if (stable_rows[pressed_row] || hold_timer < 2'b11) begin
                             nextstate = col3_hold;
                        end
                        else nextstate = col0;
