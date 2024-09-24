@@ -94,8 +94,8 @@ module lab3_sx(
     two_ssd display(
         reset,
         out_clk,
-        num1,
         num2,
+        num1,
         on1,
         on2,
         seg
