@@ -23,29 +23,18 @@ module two_ssd(
     output logic [6:0] seg
 );
 
-    // Logic for the clocks
-    logic int_osc;
-    logic out_clk;
-
-    // Fractional clock divider, outputs a 250 hz clock
-    fractional_clk_div smaller_hz(
-        int_osc,
-        reset,
-        out_clk
-    );
-
     // Logic for the time multiplexer
     logic select;
     logic [3:0] out;
 
-    always_ff @(posedge out_clk) begin
+    always_ff @(posedge clk) begin
         if (reset == 0) select <= 0;
         else select <= !select;
     end
 
     // Take divided clock and select
     time_multiplexer tmux (
-        out_clk,
+        clk,
         select,
         num1,
         num2,
