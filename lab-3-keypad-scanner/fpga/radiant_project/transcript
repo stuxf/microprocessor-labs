@@ -12,10 +12,21 @@
 # // of the Customer's facilities without the express written permission of SISW,
 # // and may not be used in any way not expressly authorized by SISW.
 # //
-vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv
+vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv
 # Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
-# Start time: 14:29:01 on Sep 22,2024
-# vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv 
+# Start time: 16:08:23 on Sep 24,2024
+# vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv 
+# -- Compiling module scanner_tb
+# 
+# Top level modules:
+# 	scanner_tb
+# End time: 16:08:23 on Sep 24,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv
+# Questa Lattice OEM Edition-64 vlog 2024.2 Compiler 2024.05 May 20 2024
+# Start time: 16:08:31 on Sep 24,2024
+# vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv 
+# -- Compiling module debouncer
 # -- Compiling module fractional_clk_div
 # -- Compiling module keypad_decoder
 # -- Compiling module lab3_sx
@@ -23,16 +34,19 @@ vlog -reportprogress 300 -work work /var/home/user/Dev/School/E155/microprocesso
 # -- Compiling module scanner_tb
 # -- Compiling module seven_segment
 # -- Compiling module sync
+# -- Compiling module time_multiplexer
+# -- Compiling module two_digits
+# -- Compiling module two_ssd
 # 
 # Top level modules:
 # 	lab3_sx
 # 	scanner_tb
-# End time: 14:29:01 on Sep 22,2024, Elapsed time: 0:00:00
+# End time: 16:08:31 on Sep 24,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 vsim work.scanner_tb -voptargs=+acc
 # vsim work.scanner_tb -voptargs="+acc" 
-# Start time: 14:29:19 on Sep 22,2024
-# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# Start time: 16:08:49 on Sep 24,2024
+# ** Note: (vsim-3812) Design is being optimized...
 # ** Warning: (vopt-10587) Some optimizations are turned off because the +acc switch is in effect. This will cause your simulation to run slowly. Please use -access/-debug to maintain needed visibility. The +acc switch would be deprecated in a future release.
 # ** Note: (vopt-143) Recognized 1 FSM in module "scanner(fast)".
 # ** Note: (vsim-12126) Error and warning message counts have been restored: Errors=0, Warnings=1.
@@ -49,8 +63,13 @@ sim:/scanner_tb/dut/pressed_row \
 sim:/scanner_tb/dut/pressed_col \
 sim:/scanner_tb/dut/press \
 sim:/scanner_tb/dut/nextstate \
+sim:/scanner_tb/dut/hold_timer \
 sim:/scanner_tb/dut/cols \
 sim:/scanner_tb/dut/clk
-run 2000
-# Time                  120: Key pressed at row 0, col 0
-# Time                  770: Key pressed at row 1, col 2
+run -all
+# Time                  130: Key pressed at row 1, col 1
+# Time                  780: Key pressed at row 2, col 1
+# Break key hit
+# Break in Module scanner_tb at /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv line 32
+# End time: 16:31:19 on Sep 24,2024, Elapsed time: 0:22:30
+# Errors: 0, Warnings: 1
