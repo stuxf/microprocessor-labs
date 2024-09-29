@@ -8,7 +8,7 @@
 
 // Define macros for constants
 #define LED_PIN 3
-#define DELAY_DURATION_MS 200
+#define DELAY_DURATION_MS 20000
 
 // Function for dummy delay by executing nops
 void ms_delay(int ms)
