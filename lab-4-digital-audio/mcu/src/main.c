@@ -144,6 +144,8 @@ int main(void)
     // Turn on clock to GPIOB
     RCC->AHB2ENR |= (1 << 1);
 
+    // TODO: Set up timer
+
     // Set LED_PIN as output
     pinMode(LED_PIN, GPIO_OUTPUT);
 
@@ -154,4 +156,18 @@ int main(void)
         togglePin(LED_PIN);
     }
     return 0;
+}
+
+// TODO: Implement playNote function
+void playNote(int frequency, int time)
+{
+    return;
+}
+
+void playFurElise()
+{
+    for (int noteIndex = 0; noteIndex < 109; ++noteIndex)
+    {
+        playNote(notes[noteIndex][0], notes[noteIndex][1]);
+    }
 }
