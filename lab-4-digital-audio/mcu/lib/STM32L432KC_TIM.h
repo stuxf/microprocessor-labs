@@ -16,15 +16,6 @@
 #define TIM2_BASE (0x40000000UL) // Base address of TIM2 (For PWM)
 #define TIM6_BASE (0x40001000UL) // Base address of TIM6 (For Note Duration)
 
-// PLL
-#define PLLSRC_HSI 0
-#define PLLSRC_HSE 1
-
-// Clock configuration
-#define SW_HSI 0
-#define SW_HSE 1
-#define SW_PLL 2
-
 /**
  * @brief TIMx; RM0394 pg. 884
  */
@@ -52,16 +43,26 @@ typedef struct
   __IO uint32_t TIMx_DCR;   // 0x48
   __IO uint32_t TIMx_DMAR;  // 0x4c
   __IO uint32_t TIM2_OR1;   // 0x50
+  __IO uint32_t RESERVED2;  // 0x54
+  __IO uint32_t RESERVED3;  // 0x58
+  __IO uint32_t RESERVED4;  // 0x5c
   __IO uint32_t TIM2_OR2;   // 0x60
-} TIM_TypeDef;
+} TIMx_TypeDef;
 
-#define TIM2 ((TIM_TypeDef *)TIM2_BASE)
-#define TIM6 ((TIM_TypeDef *)TIM6_BASE)
+#define TIM2 ((TIMx_TypeDef *)TIM2_BASE)
+#define TIM6 ((TIMx_TypeDef *)TIM6_BASE)
 
 ///////////////////////////////////////////////////////////////////////////////
 // Function prototypes
 ///////////////////////////////////////////////////////////////////////////////
 
-void configureTIM(void);
+// Initialize TIMx
+void TIMx_Init(TIMx_TypeDef* TIMx);
+
+// Delay function using TIMx
+void TIMx_Delay_ms(TIMx_TypeDef* TIMx, uint32_t ms);
+
+// Change PWM frequency
+void TIMx_SetFrequency(TIMx_TypeDef* TIMx, uint32_t frequency);
 
 #endif
