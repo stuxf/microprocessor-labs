@@ -1,0 +1,5 @@
+# Segger Embedded Studio - Taken from Prof. Brake for E155
+**/Output/
+**/Debug/
+*.emSession
+*.jlink
