@@ -37,10 +37,4 @@ module fractional_clk_div_tb();
         $finish;
     end
 
-    // Monitor output and internal signals
-    initial begin
-        $monitor("Time=%0t ns: reset=%b, out_clk=%b, counter=%d", 
-                 $time, reset, out_clk, dut.counter);
-    end
-
 endmodule
