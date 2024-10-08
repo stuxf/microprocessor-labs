@@ -1,25 +1,15 @@
-// lab4_starter.c
-// Fur Elise, E155 Lab 4
-// Updated Fall 2024
+// Stephen Xu
+// stxu@g.hmc.edu
+// October 7th, 2024
 
 #include "STM32L432KC_RCC.h"
 #include "STM32L432KC_GPIO.h"
 #include "STM32L432KC_FLASH.h"
+#include "STM32L432KC_TIM.h"
 
 // Define macros for constants
 #define LED_PIN 3
-#define DELAY_DURATION_MS 20000
-
-// Function for dummy delay by executing nops
-void ms_delay(int ms)
-{
-    while (ms-- > 0)
-    {
-        volatile int x = 1000;
-        while (x-- > 0)
-            __asm("nop");
-    }
-}
+#define DELAY_DURATION_MS 200
 
 // Pitch in Hz, duration in ms
 const int notes[][2] = {
@@ -141,10 +131,17 @@ int main(void)
     // Setup the PLL and switch clock source to the PLL
     configureClock();
 
+    // Set up timer 2
+    RCC->APB1ENR1 |= (1 << 0);
+    // Set up timer 6
+    RCC->APB1ENR1 |= (1 << 4);
+
     // Turn on clock to GPIOB
     RCC->AHB2ENR |= (1 << 1);
 
-    // TODO: Set up timer
+    // Set up timer
+    TIMx_Init(TIM2);
+    TIMx_Init(TIM6);
 
     // Set LED_PIN as output
     pinMode(LED_PIN, GPIO_OUTPUT);
@@ -152,6 +149,7 @@ int main(void)
     // Blink LED
     while (1)
     {
+        TIMx_Delay_ms(TIM6, 200);
         ms_delay(DELAY_DURATION_MS);
         togglePin(LED_PIN);
     }
@@ -161,7 +159,8 @@ int main(void)
 // TODO: Implement playNote function
 void playNote(int frequency, int time)
 {
-    return;
+    TIMx_SetFrequency(TIM2, frequency);
+    TIMx_Delay_ms(TIM6, time);
 }
 
 void playFurElise()

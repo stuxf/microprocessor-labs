@@ -1,5 +1,8 @@
 // STM32L432KC_RCC.h
 // Header for RCC functions
+// Stephen Xu
+// stxu@g.hmc.edu
+// October 7th, 2024
 
 #ifndef STM32L4_TIM_H
 #define STM32L4_TIM_H
@@ -57,12 +60,12 @@ typedef struct
 ///////////////////////////////////////////////////////////////////////////////
 
 // Initialize TIMx
-void TIMx_Init(TIMx_TypeDef* TIMx);
+void TIMx_Init(TIMx_TypeDef *TIMx);
 
 // Delay function using TIMx
-void TIMx_Delay_ms(TIMx_TypeDef* TIMx, uint32_t ms);
+void TIMx_Delay_ms(TIMx_TypeDef *TIMx, uint32_t ms);
 
 // Change PWM frequency
-void TIMx_SetFrequency(TIMx_TypeDef* TIMx, uint32_t frequency);
+void TIMx_SetFrequency(TIMx_TypeDef *TIMx, uint32_t frequency);
 
 #endif
