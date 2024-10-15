@@ -8,8 +8,9 @@
 #include "STM32L432KC_TIM.h"
 
 // Define macros for constants
-#define LED_PIN 3
-#define DELAY_DURATION_MS 200
+#define SPEAKER_PIN 3
+void playNote(int frequency, int time);
+void playFurElise(void);
 
 // Pitch in Hz, duration in ms
 const int notes[][2] = {
@@ -143,16 +144,13 @@ int main(void)
     TIMx_Init(TIM2);
     TIMx_Init(TIM6);
 
-    // Set LED_PIN as output
-    pinMode(LED_PIN, GPIO_OUTPUT);
+    // Set SPEAKER_PIN as AF (to connect to PWM)
+    pinMode(SPEAKER_PIN, GPIO_ALT);
+    // AF1 mode for AFSEL3 (Pin 3)
+    GPIO->AFRL |= (0b0001 << 12);
 
-    // Blink LED
-    while (1)
-    {
-        TIMx_Delay_ms(TIM6, 200);
-        ms_delay(DELAY_DURATION_MS);
-        togglePin(LED_PIN);
-    }
+    playFurElise();
+
     return 0;
 }
 
