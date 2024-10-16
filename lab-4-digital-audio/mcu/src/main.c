@@ -204,14 +204,11 @@ int main(void)
 
     playFurElise();
 
-    for(int i = 0; i < 5; ++i) {
+    for(int i = 0; i < 4; ++i) {
         TIMx_Delay_ms(TIM6, 800);
     }
 
-    for(int i = 0; i < 3; ++i)
-    {
-        playCustomSong();
-    }
+    playCustomSong();
 
     return 0;
 }
