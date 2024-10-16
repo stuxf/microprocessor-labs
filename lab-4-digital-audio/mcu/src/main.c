@@ -11,6 +11,7 @@
 #define SPEAKER_PIN 3
 void playNote(int frequency, int time);
 void playFurElise(void);
+void playCustomSong(void);
 
 // Pitch in Hz, duration in ms
 const int notes[][2] = {
@@ -123,6 +124,58 @@ const int notes[][2] = {
     {494, 125},
     {440, 500},
     {0, 0}};
+const int notesCustom[][2] = {
+    {330, 500},
+    {392, 500},
+    {440, 500},
+    {494, 1000},
+    {0, 250},
+    {440, 500},
+    {392, 500},
+    {330, 800},
+    {0, 250},
+    {330, 500},
+    {392, 500},
+    {440, 500},
+    {523, 800},
+    {0, 250},
+    {494, 500},
+    {440, 500},
+    {392, 800},
+    {0, 250},
+    {330, 250},
+    {392, 250},
+    {440, 250},
+    {494, 250},
+    {523, 250},
+    {587, 250},
+    {659, 250},
+    {698, 250},
+    {740, 125},
+    {659, 125},
+    {587, 125},
+    {523, 125},
+    {494, 125},
+    {440, 125},
+    {392, 125},
+    {330, 125},
+    {349, 125},
+    {392, 125},
+    {440, 125},
+    {494, 125},
+    {523, 125},
+    {587, 125},
+    {659, 125},
+    {698, 125},
+    {740, 125},
+    {784, 125},
+    {830, 125},
+    {880, 125},
+    {932, 125},
+    {988, 125},
+    {1047, 250},
+    {0, 0}
+};
 
 int main(void)
 {
@@ -151,10 +204,18 @@ int main(void)
 
     playFurElise();
 
+    for(int i = 0; i < 5; ++i) {
+        TIMx_Delay_ms(TIM6, 800);
+    }
+
+    for(int i = 0; i < 3; ++i)
+    {
+        playCustomSong();
+    }
+
     return 0;
 }
 
-// TODO: Implement playNote function
 void playNote(int frequency, int time)
 {
     TIMx_SetFrequency(TIM2, frequency);
@@ -166,5 +227,13 @@ void playFurElise()
     for (int noteIndex = 0; noteIndex < 109; ++noteIndex)
     {
         playNote(notes[noteIndex][0], notes[noteIndex][1]);
+    }
+}
+
+void playCustomSong()
+{
+    for (int noteIndex = 0; noteIndex < 50; ++noteIndex)
+    {
+        playNote(notesCustom[noteIndex][0], notesCustom[noteIndex][1]);
     }
 }
