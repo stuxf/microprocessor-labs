@@ -1,25 +1,35 @@
 m255
 K4
 z2
-Z0 !s12c _opt
+Z0 !s12c _opt2
 Z1 !s99 nomlopt
-Z2 !s12c _opt1
-R1
-R2
-R1
-Z3 !s12c _opt2
-R1
-R3
-R1
-R2
-R1
-R2
+Z2 !s12c _opt
 R1
 R2
 R1
 R2
 R1
 R0
+R1
+R2
+R1
+Z3 !s12c _opt1
+R1
+R3
+R1
+R0
+R1
+R0
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R3
+R1
+R2
 R1
 !s11f MIXED_VERSIONS
 13
@@ -30,87 +40,112 @@ R1
 cModel Technology
 Z4 d/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/radiant_project
 T_opt
-!s110 1727219330
-Vf94dR42n?h8N^O874JzMh2
-Z5 04 10 4 work scanner_tb fast 0
-=1-000ae431a4f1-66f34682-a19e-1e080
+!s110 1729475609
+V<^>MGAh;h_QmVWAk2]F?L0
+04 13 4 work two_digits_tb fast 0
+=1-000ae431a4f1-6715b419-2820d-4483d
 R1
-Z6 !s12f OEM25U3 
-Z7 !s12b OEM100
-Z8 !s124 OEM100
-Z9 !s135 nogc
-Z10 o-quiet -auto_acc_if_foreign -work work +acc
-Z11 tCvgOpt 0
+Z5 !s12f OEM25U2 
+Z6 !s12b OEM100
+Z7 !s124 OEM100
+Z8 !s135 nogc
+Z9 o-quiet -auto_acc_if_foreign -work work +acc
+Z10 tCvgOpt 0
 n@_opt
-Z12 OL;O;2024.2;79
+Z11 OL;O;2024.2;79
+R4
 T_opt1
 !s110 1727040560
 VT;GQSGzWGlzCDBXiVk2hH0
-R5
+04 10 4 work scanner_tb fast 0
 =1-000ae431a4f1-66f08c30-326ea-24ebd
 R1
+!s12f OEM25U3 
 R6
 R7
 R8
 R9
 R10
-R11
 n@_opt1
-R12
+R11
 R4
 T_opt2
-!s110 1726956633
-Veof;ZTOi0J1<4Bg:`jMbg0
-04 7 4 work scanner fast 0
-=1-000ae431a4f1-66ef4459-122a8-334c3
+!s110 1729475814
+VPZA:l<DFfl?JM:N6:Bc@c2
+04 12 4 work debouncer_tb fast 0
+=1-000ae431a4f1-6715b4e6-665b6-45380
 R1
-!s12f OEM25U2 
+R5
+R6
 R7
 R8
 R9
 R10
-R11
 n@_opt2
-R12
-R4
+R11
 vdebouncer
-Z13 2/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv
-Z14 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z15 !s110 1727219311
+Z12 2/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv
+Z13 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z14 !s110 1729475587
 !i10b 1
 !s100 k1CP^R5azLVS2=MQboG9j3
 I:`a:AFdIGm^QkdM3z@[me1
 S1
 R4
-w1727156476
+Z15 w1727560548
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv
-!i122 8
+!i122 12
 L0 10 26
 Z16 VDg1SIo80bB@j0V0VzS_@n1
 Z17 OL;L;2024.2;79
 r1
 !s85 0
 31
-Z18 !s108 1727219311.000000
-Z19 !s107 /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv|
-Z20 !s90 -reportprogress|300|-work|work|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv|
+Z18 !s108 1729475587.000000
+Z19 !s107 /var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv|
+Z20 !s90 -reportprogress|300|-work|work|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits_tb.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv|
 !i113 0
 Z21 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
-R11
-vfractional_clk_div
+R10
+vdebouncer_tb
+R12
 R13
 R14
-R15
+!i10b 1
+!s100 W[SdLY@IA5RijeJa67[z40
+Io9@mmE6mF5hOJM>GTJgkb0
+S1
+R4
+w1729474551
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer_tb.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/debouncer_tb.sv
+!i122 12
+L0 11 55
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R10
+vfractional_clk_div
+R12
+R13
+R14
 !i10b 1
 !s100 ?FKOeB>TmJ;;PC8He28^R0
 IP5PSoKZCE>AUXFKAn=igi2
 S1
 R4
-w1727153300
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/fractional_clk_div.sv
-!i122 8
+!i122 12
 L0 10 22
 R16
 R17
@@ -122,20 +157,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vkeypad_decoder
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 _25SU0=PgK<FDKK3<>j>F1
 IZW@<mD6TcAifRoL[4;a@d3
 S1
 R4
-Z22 w1726610172
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/keypad_decoder.sv
-!i122 8
+!i122 12
 L0 10 29
 R16
 R17
@@ -147,20 +182,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vlab3_sx
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 MZ3I27_Si:d]Y=DnOZ8=F2
 IDK]4?5dXCNALR=ZH2Q6]]2
 S1
 R4
-w1727208686
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/lab3_sx.sv
-!i122 8
+!i122 12
 L0 10 100
 R16
 R17
@@ -172,20 +207,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vscanner
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 K7Q:CzVAA>bUL?[ERB?mR2
 I^L_XM:fW6[Oi?4]NA7_H[2
 S1
 R4
-w1727150110
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner.sv
-!i122 8
+!i122 12
 L0 10 131
 R16
 R17
@@ -197,20 +232,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vscanner_tb
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 AoL9=VFkOTggfIcFj^j2I0
 I8T2@lTiX<n;o6zZ0o^cV`2
 S1
 R4
-w1727073092
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/scanner_tb.sv
-!i122 8
+!i122 12
 L0 11 53
 R16
 R17
@@ -222,20 +257,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vseven_segment
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 1jlURTzLd]:^ibEDObUFN0
 IAJ>E;0gE84G>gZBG1XH^=1
 S1
 R4
-R22
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/seven_segment.sv
-!i122 8
+!i122 12
 L0 9 35
 R16
 R17
@@ -247,20 +282,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vsync
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 2<A:Qfl>fS^G>?5JgLjih1
 I^okoj]OGcNEOBi@l<2Ia01
 S1
 R4
-R22
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/sync.sv
-!i122 8
+!i122 12
 L0 3 11
 R16
 R17
@@ -272,20 +307,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vtime_multiplexer
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 eN@zZZTgS`G`gbnAnbfM31
 I_z^K0K_j_ZLReb>OdR`bR3
 S1
 R4
-w1727153070
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/time_multiplexer.sv
-!i122 8
+!i122 12
 L0 9 15
 R16
 R17
@@ -297,20 +332,20 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
 vtwo_digits
+R12
 R13
 R14
-R15
 !i10b 1
 !s100 23T0UKOKCW]nimQi@iLd=3
 IVIdeUiK89JZF`AdEcHO[^3
 S1
 R4
-w1727155232
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits.sv
-!i122 8
+!i122 12
 L0 9 27
 R16
 R17
@@ -322,20 +357,45 @@ R19
 R20
 !i113 0
 R21
-R11
-vtwo_ssd
+R10
+vtwo_digits_tb
+R12
 R13
 R14
-R15
+!i10b 1
+!s100 OMOioI4c`hHD?l_?4Da3V2
+IO2PJFYL3okYz=9AlV6_df2
+S1
+R4
+w1729475560
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits_tb.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_digits_tb.sv
+!i122 12
+L0 11 58
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R10
+vtwo_ssd
+R12
+R13
+R14
 !i10b 1
 !s100 jhYCI15CnA0=j_;NGZQ2^3
 IT>T;2cW^4;E:B7<z?`WM_3
 S1
 R4
-w1727154093
+R15
 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv
 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-3-keypad-scanner/fpga/src/two_ssd.sv
-!i122 8
+!i122 12
 L0 9 45
 R16
 R17
@@ -347,4 +407,4 @@ R19
 R20
 !i113 0
 R21
-R11
+R10
