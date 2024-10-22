@@ -47,9 +47,9 @@ int main(void) {
 // TODO: What is the right name for the IRQHandler?
 void EXTI2_IRQHandler(void){
     // Check that the button was what triggered our interrupt
-    if (EXTI->PR1 & (1 << )){
+    if (EXTI->PR1 & (1 << gpioPinOffset(BUTTON_PIN))){
         // If so, clear the interrupt (NB: Write 1 to reset.)
-        EXTI->PR1 |= (1 << );
+        EXTI->PR1 |= (1 << gpioPinOffset(BUTTON_PIN));
 
         // Then toggle the LED
         togglePin(LED_PIN);
