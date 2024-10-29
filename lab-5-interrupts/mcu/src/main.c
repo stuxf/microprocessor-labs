@@ -13,12 +13,14 @@
 #include "stm32l432xx.h"
 
 // Function used by printf to send characters to the laptop
-int _write(int file, char *ptr, int len) {
-  int i = 0;
-  for (i = 0; i < len; i++) {
-    ITM_SendChar((*ptr++));
-  }
-  return len;
+int _write(int file, char *ptr, int len)
+{
+    int i = 0;
+    for (i = 0; i < len; i++)
+    {
+        ITM_SendChar((*ptr++));
+    }
+    return len;
 }
 
 #define QUAD_A PA5
@@ -50,8 +52,9 @@ int main(void)
     int volatile curBState = digitalRead(QUAD_B);
     int volatile prevBState = curBState;
 
-    while(1) {
-        // Motor spins at 600 rpm. 
+    while (1)
+    {
+        // Motor spins at 600 rpm.
         // We want to sample at twice the rate
         // Makes 120 Pulses per rotation
         // 120 * 600 / 60 = 1200 Hz
@@ -60,18 +63,27 @@ int main(void)
         // So we delay for 400 microseconds
         // TIM2 is a CHONKY 32 bit timer so we chilling asf
         delay_millis(delay_micros, 400);
-        
+
         // check state changes
         prevBState = curBState;
         prevAState = curAState;
 
         // Rising Edge A
-
+        if ((prevAState == 0) && (curAState == 1))
+        {
+        }
         // Rising Edge B
-
+        if ((prevBState == 0) && (curBState == 1))
+        {
+        }
         // Falling Edge A
-
+        if ((prevAState == 1) && (curAState == 0))
+        {
+        }
         // Falling Edge B
+        if ((prevBState == 1) && (curBState == 0))
+        {
+        }
     }
 
     // Interrupt Approach
