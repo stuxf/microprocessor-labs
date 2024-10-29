@@ -41,16 +41,21 @@ int main(void)
     initTIM(DELAY_TIM);
 
     // Some sort of local variables about speed
-    int aRiseTime = 0;
-    int aFallTime = 0;
-    int bRiseTime = 0;
-    int bRiseTime = 0;
+    uint32_t aRiseTime = 0;
+    uint32_t aFallTime = 0;
+    uint32_t bRiseTime = 0;
+    uint32_t bFallTime = 0;
+
+    uint32_t pulses = 0;
+    uint32_t pulseTime = 0;
+    uint32_t time = 0;
 
     // Local variables about the current state
     int volatile curAState = digitalRead(QUAD_A);
     int volatile prevAState = curAState;
     int volatile curBState = digitalRead(QUAD_B);
     int volatile prevBState = curBState;
+    int direction = 1;
 
     while (1)
     {
@@ -60,9 +65,11 @@ int main(void)
         // 120 * 600 / 60 = 1200 Hz
         // We want to sample at at least 2400 Hz
         // Equivalent to a delay of 0.41 ms
-        // So we delay for 400 microseconds
+        // So we delay for 200 microseconds
         // TIM2 is a CHONKY 32 bit timer so we chilling asf
-        delay_millis(delay_micros, 400);
+        // Can keep this going for an hour haha
+        delay_millis(delay_micros, 200);
+        time += 200;
 
         // check state changes
         prevBState = curBState;
@@ -71,18 +78,22 @@ int main(void)
         // Rising Edge A
         if ((prevAState == 0) && (curAState == 1))
         {
+            aRiseTime = time;
         }
         // Rising Edge B
         if ((prevBState == 0) && (curBState == 1))
         {
+            bRiseTime = time;
         }
         // Falling Edge A
         if ((prevAState == 1) && (curAState == 0))
         {
+            aFallTime = time;
         }
         // Falling Edge B
         if ((prevBState == 1) && (curBState == 0))
         {
+            bFallTime = time;
         }
     }
 
