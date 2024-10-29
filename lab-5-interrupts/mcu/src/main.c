@@ -44,8 +44,13 @@ int main(void)
     int bRiseTime = 0;
     int bRiseTime = 0;
 
-    while(1) {
+    // Local variables about the current state
+    int volatile curAState = digitalRead(QUAD_A);
+    int volatile prevAState = curAState;
+    int volatile curBState = digitalRead(QUAD_B);
+    int volatile prevBState = curBState;
 
+    while(1) {
         // Motor spins at 600 rpm. 
         // We want to sample at twice the rate
         // Makes 120 Pulses per rotation
@@ -57,6 +62,18 @@ int main(void)
         // We can do more minute delays with different timer config
         // Unfortunately, I'm lazy.
         delay_millis(DELAY_TIM, 1);
+        
+        // check state changes
+        prevBState = curBState;
+        prevAState = curAState;
+
+        // Rising Edge A
+
+        // Rising Edge B
+
+        // Falling Edge A
+
+        // Falling Edge B
     }
 
     // Interrupt Approach
