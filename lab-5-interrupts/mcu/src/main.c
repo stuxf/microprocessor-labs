@@ -50,6 +50,8 @@ int main(void)
     uint32_t pulseTime = 0;
     uint32_t time = 0;
 
+    float revsPerSec;
+
     // Local variables about the current state
     int volatile curAState = digitalRead(QUAD_A);
     int volatile prevAState = curAState;
@@ -94,6 +96,10 @@ int main(void)
         if ((prevBState == 1) && (curBState == 0))
         {
             bFallTime = time;
+        }
+        if (time % 100000 == 0)
+        {
+            printf("Rev/s: %f", revsPerSec);
         }
     }
 
