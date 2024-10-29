@@ -21,6 +21,8 @@ int main(void)
     pinMode(QUAD_B, GPIO_INPUT);
 
     // Initialize Timer
+    RCC->APB1ENR1 |= RCC_APB1ENR1_TIM2EN;
+    initTIM(DELAY_TIM);
 
     while(1) {
 
