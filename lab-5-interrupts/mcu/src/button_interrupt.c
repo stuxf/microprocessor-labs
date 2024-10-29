@@ -5,7 +5,7 @@
 
 #include "main.h"
 
-int main(void) {
+int mainA(void) {
     // Enable LED as output
     gpioEnable(GPIO_PORT_B);
     pinMode(LED_PIN, GPIO_OUTPUT);

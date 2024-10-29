@@ -108,7 +108,7 @@ int main(void)
         if (time % 100000 == 0 && time != 0)
         {
             // Running average of pulses
-            revsPerSec = (pulses * 1.0)/(pulseTime * 1.0) * (1.0/120.0);
+            revsPerSec = direction * (pulses * 1.0)/(pulseTime * 1.0) * (1.0/120.0);
             printf("Rev/s: %f", revsPerSec);
         }
     }
