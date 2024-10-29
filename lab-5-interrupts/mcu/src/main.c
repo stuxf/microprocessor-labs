@@ -16,6 +16,9 @@ int main(void)
     // Polling approach
 
     // Enable QUAD_A and QUAD_B as GPIO input
+    gpioEnable(GPIO_PORT_A);
+    pinMode(QUAD_A, GPIO_INPUT);
+    pinMode(QUAD_B, GPIO_INPUT);
 
     // Initialize Timer
 
