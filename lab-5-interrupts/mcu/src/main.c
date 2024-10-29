@@ -81,6 +81,14 @@ int main(void)
         if ((prevAState == 0) && (curAState == 1))
         {
             aRiseTime = time;
+            if (curBState) {
+                direction = -1; 
+                pulseTime += aRiseTime - bRiseTime;
+            } else {
+                direction = 1;
+                pulseTime += bRiseTime - aRiseTime;
+            }
+            pulses++;
         }
         // Rising Edge B
         if ((prevBState == 0) && (curBState == 1))
@@ -97,8 +105,10 @@ int main(void)
         {
             bFallTime = time;
         }
-        if (time % 100000 == 0)
+        if (time % 100000 == 0 && time != 0)
         {
+            // Running average of pulses
+            revsPerSec = (pulses * 1.0)/(pulseTime * 1.0) * (1.0/120.0);
             printf("Rev/s: %f", revsPerSec);
         }
     }
