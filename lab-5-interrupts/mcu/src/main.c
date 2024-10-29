@@ -56,12 +56,9 @@ int main(void)
         // Makes 120 Pulses per rotation
         // 120 * 600 / 60 = 1200 Hz
         // We want to sample at at least 2400 Hz
-        // Delay of 0.41 ms
-        // Unfortunately, the minimum delay we can do is 1 ms
-        // At least with current implementation
-        // We can do more minute delays with different timer config
-        // Unfortunately, I'm lazy.
-        delay_millis(DELAY_TIM, 1);
+        // Equivalent to a delay of 0.41 ms
+        // So we delay for 400 microseconds
+        delay_millis(delay_micros, 400);
         
         // check state changes
         prevBState = curBState;
