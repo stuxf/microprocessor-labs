@@ -58,6 +58,7 @@ int main(void)
         // We want to sample at at least 2400 Hz
         // Equivalent to a delay of 0.41 ms
         // So we delay for 400 microseconds
+        // TIM2 is a CHONKY 32 bit timer so we chilling asf
         delay_millis(delay_micros, 400);
         
         // check state changes
