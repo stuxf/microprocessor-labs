@@ -62,6 +62,7 @@
       <folder Name="lib" exclude="" filter="" path="../lib" recurse="Yes" />
       <file file_name="../src/button_interrupt.c" />
       <file file_name="../src/button_polling.c" />
+      <file file_name="../src/main.c" />
       <file file_name="../src/main.h" />
     </folder>
     <folder Name="System Files">
