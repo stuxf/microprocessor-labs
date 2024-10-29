@@ -70,7 +70,7 @@ int main(void)
         // So we delay for 200 microseconds
         // TIM2 is a CHONKY 32 bit timer so we chilling asf
         // Can keep this going for an hour haha
-        delay_millis(delay_micros, 200);
+        delay_micros(TIM2, 200);
         time += 200;
 
         // check state changes
