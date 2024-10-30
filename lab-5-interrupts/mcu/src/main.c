@@ -24,7 +24,7 @@ int _write(int file, char *ptr, int len)
 }
 
 #define QUAD_A PA5
-#define QUAD_B PA4
+#define QUAD_B PA8
 #define DELAY_TIM TIM2
 
 int main(void)
