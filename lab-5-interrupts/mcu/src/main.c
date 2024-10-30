@@ -73,9 +73,8 @@ int main(void)
         delay_micros(TIM2, 200);
         time += 200;
 
-        // check state changes
-        prevBState = curBState;
-        prevAState = curAState;
+        curAState = digitalRead(QUAD_A);
+        curBState = digitalRead(QUAD_B);
 
         // Rising Edge A
         if ((prevAState == 0) && (curAState == 1))
@@ -109,8 +108,13 @@ int main(void)
         {
             // Running average of pulses
             revsPerSec = direction * (pulses * 1.0)/(pulseTime * 1.0) * (1.0/120.0);
-            printf("Rev/s: %f", revsPerSec);
+            printf("Rev/s: %f\n", revsPerSec);
+            printf("Debug info: %d, %d, %d \n", aRiseTime, bRiseTime, time);
+            printf("Debug info 2: %d, %d \n", prevAState, curAState);
         }
+        // check state changes
+        prevBState = curBState;
+        prevAState = curAState;
     }
 
     // Interrupt Approach
