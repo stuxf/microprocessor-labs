@@ -81,10 +81,10 @@ int main(void)
         {
             aRiseTime = time;
             if (curBState) {
-                direction = -1; 
+                direction = 1; 
                 pulseTime += aRiseTime - bRiseTime;
             } else {
-                direction = 1;
+                direction = -1;
                 pulseTime += bRiseTime - aRiseTime;
             }
             pulses++;
@@ -93,24 +93,30 @@ int main(void)
         if ((prevBState == 0) && (curBState == 1))
         {
             bRiseTime = time;
+            pulses++;
         }
         // Falling Edge A
         if ((prevAState == 1) && (curAState == 0))
         {
             aFallTime = time;
+            pulses++;
         }
         // Falling Edge B
         if ((prevBState == 1) && (curBState == 0))
         {
             bFallTime = time;
+            pulses++;
         }
         if (time % 100000 == 0 && time != 0)
         {
             // Running average of pulses
-            revsPerSec = direction * (pulses * 1.0)/(pulseTime * 1.0) * (1.0/120.0);
+            revsPerSec = direction * (pulses * 1.0)/(100000 * 1.0) * (1.0/120.0) * (1.0/4.0) * 1000000;
             printf("Rev/s: %f\n", revsPerSec);
             printf("Debug info: %d, %d, %d \n", aRiseTime, bRiseTime, time);
             printf("Debug info 2: %d, %d \n", prevAState, curAState);
+            printf("Debug info 3: %d, %d, %d \n", direction, pulses, pulseTime);
+            pulses = 0;
+            pulseTime = 0;
         }
         // check state changes
         prevBState = curBState;
@@ -118,6 +124,25 @@ int main(void)
     }
 
     // Interrupt Approach
+
+
+    // Initialize Interrupts
+
+    // 1. Enable SYSCFG clock domain in RCC
+    RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+    // 2. Configure EXTICR for interrupts
+    SYSCFG->EXTICR[0] |= _VAL2FLD(SYSCFG_EXTICR1_EXTI2, 0b000); // Select PA2
+    // I think the above might be a bit wrong
+
+    // Enable interrupts globally
+    __enable_irq();
+
+
+
+
 }
 
 // Some sort of interrupt handler
+void EXTI9_5_IRQHandler(void) {
+    return;
+}
