@@ -80,10 +80,13 @@ int main(void)
         if ((prevAState == 0) && (curAState == 1))
         {
             aRiseTime = time;
-            if (curBState) {
-                direction = 1; 
+            if (curBState)
+            {
+                direction = 1;
                 pulseTime += aRiseTime - bRiseTime;
-            } else {
+            }
+            else
+            {
                 direction = -1;
                 pulseTime += bRiseTime - aRiseTime;
             }
@@ -110,7 +113,7 @@ int main(void)
         if (time % 100000 == 0 && time != 0)
         {
             // Running average of pulses
-            revsPerSec = direction * (pulses * 1.0)/(100000 * 1.0) * (1.0/120.0) * (1.0/4.0) * 1000000;
+            revsPerSec = direction * (pulses * 1.0) / (100000 * 1.0) * (1.0 / 120.0) * (1.0 / 4.0) * 1000000;
             printf("Rev/s: %f\n", revsPerSec);
             printf("Debug info: %d, %d, %d \n", aRiseTime, bRiseTime, time);
             printf("Debug info 2: %d, %d \n", prevAState, curAState);
@@ -125,24 +128,44 @@ int main(void)
 
     // Interrupt Approach
 
-
     // Initialize Interrupts
 
     // 1. Enable SYSCFG clock domain in RCC
     RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
     // 2. Configure EXTICR for interrupts
-    SYSCFG->EXTICR[0] |= _VAL2FLD(SYSCFG_EXTICR1_EXTI2, 0b000); // Select PA2
-    // I think the above might be a bit wrong
+    SYSCFG->EXTICR[1] |= _VAL2FLD(SYSCFG_EXTICR2_EXTI5, 0b000); // Select PA5 (QUAD_A)
+    SYSCFG->EXTICR[2] |= _VAL2FLD(SYSCFG_EXTICR3_EXTI8, 0b000); // Select PA8 (QUAD_B)
 
     // Enable interrupts globally
     __enable_irq();
 
+    // Configure interrupt for falling and rising edges of QUAD_A, QUAD_B
+    // Mask Bits
+    EXTI->IMR1 |= (1 << gpioPinOffset(QUAD_A));
+    EXTI->IMR1 |= (1 << gpioPinOffset(QUAD_B));
 
+    // Enable Both Rising and Falling Edges for QUAD_A, QUAD_B
+    EXTI->RTSR1 |= (1 << gpioPinOffset(QUAD_A));
+    EXTI->RTSR1 |= (1 << gpioPinOffset(QUAD_B));
+    EXTI->FTSR1 |= (1 << gpioPinOffset(QUAD_A));
+    EXTI->FTSR1 |= (1 << gpioPinOffset(QUAD_B));
 
-
+    // Turn on IRQ interrupt, but for PA5-9 ... (which PA5, PA8 fall under)
+    NVIC->ISER[0] |= 1 << EXTI9_5_IRQn;
 }
 
 // Some sort of interrupt handler
-void EXTI9_5_IRQHandler(void) {
-    return;
+void EXTI9_5_IRQHandler(void)
+{
+    // Check which pin (s) activated interrupt
+    if (EXTI->PR1 & (1 << gpioPinOffset(QUAD_A)))
+    {
+        // If so, clear the interrupt (NB: Write 1 to reset.)
+        EXTI->PR1 |= (1 << gpioPinOffset(QUAD_A));
+    }
+    if (EXTI->PR1 & (1 << gpioPinOffset(QUAD_B)))
+    {
+        // If so, clear the interrupt (NB: Write 1 to reset.)
+        EXTI->PR1 |= (1 << gpioPinOffset(QUAD_B));
+    }
 }
