@@ -1,5 +1,5 @@
 // STM32L432KC_SPI.c
-// TODO: <YOUR NAME>
-// TODO: <YOUR EMAIL>
-// TODO: <DATE>
-// TODO: <SHORT DESCRIPTION OF WHAT THIS FILE DOES>
+// Stephen XU
+// stxu@g.hmc.edu
+// Nov 2nd, 2024
+// Implementation code for SPI
