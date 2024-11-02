@@ -66,6 +66,22 @@ int main(void) {
   USART_TypeDef * USART = initUSART(USART1_ID, 125000);
 
   // TODO: Add SPI initialization code
+  // Set four pins to CE, SCK, SDO, SDI
+  // Described as MISO, MOSI, SCK, NSS on RM0394 Pg. 1306
+  
+  // pinMode(...,GPIO_ALT);
+
+  // Configure Chip Select, Alternate Functions
+
+  // Define constants
+  // Baud Rate
+  int BAUD_RATE;
+  // Clock Polarity
+  int CLOCK_POLARITY;
+  // Clock Phase
+  int CLOCK_PHASE;
+
+  initSPI(BAUD_RATE, CLOCK_POLARITY, CLOCK_PHASE);
 
   while(1) {
     /* Wait for ESP8266 to send a request.
