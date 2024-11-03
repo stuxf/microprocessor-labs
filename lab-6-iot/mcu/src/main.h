@@ -13,4 +13,9 @@
 #define LED_PIN PB3 // LED pin for blinking on Port B pin 3
 #define BUFF_LEN 32
 
+#define SDI_PIN PA12
+#define SDO_PIN PA6
+#define SCK_PIN PA5
+#define CS_PIN  PA8
+
 #endif // MAIN_H

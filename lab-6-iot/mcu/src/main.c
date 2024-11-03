@@ -74,11 +74,24 @@ int main(void)
   // TODO: Add SPI initialization code
   // Set four pins to CE, SCK, SDO, SDI
   // Described as MISO, MOSI, SCK, NSS on RM0394 Pg. 1306
+  // Pins to set and AF are describes in page 53 of datasheet
 
   // pinMode(...,GPIO_ALT);
+  pinMode(SDI_PIN, GPIO_ALT); // PA12
+  pinMode(SDO_PIN, GPIO_ALT); // PA6
+  pinMode(SCK_PIN, GPIO_ALT); // PA5
 
-  // Configure Chip Select, Alternate Functions
+  // Chip select
+  pinMode(CS_PIN, GPIO_OUTPUT); // PA8
 
+  // Alternate Functions
+  GPIOA->AFR[1] |= (0b0101 << GPIO_AFRH_AFSEL12_Pos); // SDI
+  GPIOA->AFR[0] |= (0b0101 << GPIO_AFRL_AFSEL6_Pos);  // SDO
+  GPIOA->AFR[0] |= (0b0101 << GPIO_AFRL_AFSEL5_Pos);  // SCK
+
+  // Le enable
+  RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
+  
   // Define constants
   // Baud Rate
   int BAUD_RATE = 0b111;
