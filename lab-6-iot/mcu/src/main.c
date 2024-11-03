@@ -11,6 +11,7 @@ Date: 9/14/19
  * Stephen Xu, stxu@g.hmc.edu
  * Nov 2nd, 2024
  */
+#include "DS1722.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -28,6 +29,7 @@ char *webpageStart = "<!DOCTYPE html><html><head><title>E155 Web Server Demo Web
 	<body><h1>E155 Web Server Demo Webpage</h1>";
 char *ledStr = "<p>LED Control:</p><form action=\"ledon\"><input type=\"submit\" value=\"Turn the LED on!\"></form>\
 	<form action=\"ledoff\"><input type=\"submit\" value=\"Turn the LED off!\"></form>";
+char *tempStr = "<p>Temp Bit Control: </p><form action=\"eightbit\"><input type=\"submit\" value=\"Eight Bit Precision\"></form><form action=\"ninebit\"><input type=\"submit\" value=\"Nine Bit Precision!\"></form><form action=\"tenbit\"><input type=\"submit\" value=\"Ten Bit Precision!\"></form><form action=\"elevenbit\"><input type=\"submit\" value=\"Eleven Bit Precision!\"></form><form action=\"twelvebit\"><input type=\"submit\" value=\"Twelve Bit Precision!\"></form>";
 char *webpageEnd = "</body></html>";
 
 // determines whether a given character sequence is in a char array request, returning 1 if present, -1 if not present
@@ -98,7 +100,7 @@ int main(void)
 
   // Le enable
   RCC->APB2ENR |= RCC_APB2ENR_SPI1EN;
-  
+
   // Define constants
   // Baud Rate
   int BAUD_RATE = 0b111;
@@ -108,6 +110,8 @@ int main(void)
   int CLOCK_PHASE = 0b1;
 
   initSPI(BAUD_RATE, CLOCK_POLARITY, CLOCK_PHASE);
+
+  initSensor(EIGHT_BIT);
 
   while (1)
   {
@@ -129,7 +133,10 @@ int main(void)
       request[charIndex++] = readChar(USART);
     }
 
-    // TODO: Add SPI code here for reading temperature
+    // TODO: Add actual request checking code
+
+    char tempStatusStr[20];
+    sprintf(tempStatusStr, "%f", readTemp());
 
     // Update string with current LED state
 
@@ -144,6 +151,7 @@ int main(void)
     // finally, transmit the webpage over UART
     sendString(USART, webpageStart); // webpage header code
     sendString(USART, ledStr);       // button for controlling LED
+    sendString(USART, tempStr);
 
     sendString(USART, "<h2>LED Status</h2>");
 
