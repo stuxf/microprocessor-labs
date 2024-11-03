@@ -60,6 +60,32 @@ int updateLEDStatus(char request[])
   return led_status;
 }
 
+int updateTempRes(char request[]) {
+    int resolution = -1;
+    
+    if (inString(request, "eightbit") == 1) {
+        initSensor(EIGHT_BIT);
+        resolution = 8;
+    }
+    else if (inString(request, "ninebit") == 1) {
+        initSensor(NINE_BIT);
+        resolution = 9;
+    }
+    else if (inString(request, "tenbit") == 1) {
+        initSensor(TEN_BIT);
+        resolution = 10;
+    }
+    else if (inString(request, "elevenbit") == 1) {
+        initSensor(ELEVEN_BIT);
+        resolution = 11;
+    }
+    else if (inString(request, "twelvebit") == 1) {
+        initSensor(TWELVE_BIT);
+        resolution = 12;
+    }
+    
+    return resolution;
+}
 /////////////////////////////////////////////////////////////////
 // Solution Functions
 /////////////////////////////////////////////////////////////////
@@ -113,6 +139,10 @@ int main(void)
 
   initSensor(EIGHT_BIT);
 
+  sendString(USART, webpageStart);
+  sendString(USART, ledStr);
+  sendString(USART,webpageEnd);
+
   while (1)
   {
     /* Wait for ESP8266 to send a request.
@@ -133,10 +163,16 @@ int main(void)
       request[charIndex++] = readChar(USART);
     }
 
+    sendString(USART, webpageStart);
+    sendString(USART, ledStr);
+    sendString(USART,webpageEnd);
+    continue;
     // TODO: Add actual request checking code
 
-    char tempStatusStr[20];
-    sprintf(tempStatusStr, "%f", readTemp());
+    int resolution = updateTempResolution(request);
+
+    char tempStatusStr[63];
+    sprintf(tempStatusStr, "Temp: %f degrees C, at %d bit resolution", readTemp(), resolution);
 
     // Update string with current LED state
 
@@ -157,6 +193,12 @@ int main(void)
 
     sendString(USART, "<p>");
     sendString(USART, ledStatusStr);
+    sendString(USART, "</p>");
+
+    sendString(USART, "<h2>Temperature Status</h2>");
+
+    sendString(USART, "<p>");
+    sendString(USART, tempStatusStr);
     sendString(USART, "</p>");
 
     sendString(USART, webpageEnd);

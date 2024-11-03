@@ -36,4 +36,8 @@ double readTemp()
     // Set to low
     // Chip disable
     digitalWrite(CS_PIN, PIO_LOW);
+
+    int16_t msb_lsb = (msb << 8) | lsb;
+
+    return (double) msb_lsb / 256.0;
 }
