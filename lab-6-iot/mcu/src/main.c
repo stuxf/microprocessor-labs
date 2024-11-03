@@ -1,9 +1,16 @@
 /*
+Original Starter Code Attribution
+-----
 File: Lab_6_JHB.c
 Author: Josh Brake
 Email: jbrake@hmc.edu
 Date: 9/14/19
 */
+/**
+ * Lab 6, IOT Temp Sensor Lab
+ * Stephen Xu, stxu@g.hmc.edu
+ * Nov 2nd, 2024
+ */
 
 #include <string.h>
 #include <stdlib.h>
@@ -96,9 +103,9 @@ int main(void)
   // Baud Rate
   int BAUD_RATE = 0b111;
   // Clock Polarity
-  int CLOCK_POLARITY = 0;
+  int CLOCK_POLARITY = 0b0;
   // Clock Phase
-  int CLOCK_PHASE = 1;
+  int CLOCK_PHASE = 0b1;
 
   initSPI(BAUD_RATE, CLOCK_POLARITY, CLOCK_PHASE);
 
