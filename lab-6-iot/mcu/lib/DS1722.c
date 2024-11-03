@@ -6,7 +6,7 @@
 
 #include "DS1722.h"
 
-void initSensor()
+void initSensor(int resolution)
 {
 }
 

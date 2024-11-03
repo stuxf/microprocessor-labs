@@ -7,7 +7,7 @@
 #ifndef DS1722_H
 #define DS1722_H
 
-void initSensor();
+void initSensor(int resolution);
 
 double readTemp();
 
