@@ -1,7 +1,7 @@
 /**
     Main: Contains main function for AES SPI communication with FPGA.
     Sends the plaintext and key over SPI to the FPGA and then receives back
-    the cyphertext. The cyphertext is then compared against the solution
+    the ciphertext. The ciphertext is then compared against the solution
     listed in Appendix A of the AES FIPS 197 standard.
     @file lab7.c
     @author Josh Brake
@@ -52,7 +52,7 @@ void checkAnswer(char*, char*, char*);
 ////////////////////////////////////////////////
 
 int main(void) {
-  char cyphertext[16];
+  char ciphertext[16];
 
   // Configure flash latency and set clock to run at 84 MHz
 
@@ -80,19 +80,19 @@ int main(void) {
 
 
   // hardware accelerated encryption
-  encrypt(key, plaintext, cyphertext);
-  checkAnswer(key, plaintext, cyphertext);
+  encrypt(key, plaintext, ciphertext);
+  checkAnswer(key, plaintext, ciphertext);
 }
 
 ////////////////////////////////////////////////
 // Functions
 ////////////////////////////////////////////////
 
-void checkAnswer(char * key, char * plaintext, char * cyphertext) {
+void checkAnswer(char * key, char * plaintext, char * ciphertext) {
   // Compare Strings:
   char correct = 1;
   for(int i = 0; i < 16; i++) {
-    volatile int k = cyphertext[i] - ct[i];
+    volatile int k = ciphertext[i] - ct[i];
     
     if(k != 0) {
       correct = 0;
@@ -106,7 +106,7 @@ void checkAnswer(char * key, char * plaintext, char * cyphertext) {
   }
   }
 
-void encrypt(char * key, char * plaintext, char * cyphertext) {
+void encrypt(char * key, char * plaintext, char * ciphertext) {
   int i;
 
   // Write LOAD high
@@ -134,7 +134,7 @@ void encrypt(char * key, char * plaintext, char * cyphertext) {
 
   for(i = 0; i < 16; i++) {
     digitalWrite(PA11, 1); // Arificial CE high
-    cyphertext[i] = spiSendReceive(0);  
+    ciphertext[i] = spiSendReceive(0);  
     digitalWrite(PA11, 0); // Arificial CE low
   }
 }

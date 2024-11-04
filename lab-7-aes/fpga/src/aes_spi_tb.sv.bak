@@ -7,7 +7,7 @@
 
 module testbench_aes_spi();
     logic clk, load, done, sck, sdi, sdo;
-    logic [127:0] key, plaintext, cyphertext, expected;
+    logic [127:0] key, plaintext, ciphertext, expected;
 		logic [255:0] comb;
     logic [8:0] i;
 
@@ -53,18 +53,18 @@ module testbench_aes_spi();
         #1; sck = 1; #5; sck = 0;
         i = i + 1;
       end else if (done && delay) begin
-        #100; // Delay to make sure that the answer is held correctly on the cyphertext before shifting out
+        #100; // Delay to make sure that the answer is held correctly on the ciphertext before shifting out
         delay = 0;
       end else if (done && i < 384) begin
         #1; sck = 1; 
-        #1; cyphertext[383-i] = sdo;
+        #1; ciphertext[383-i] = sdo;
         #4; sck = 0;
         i = i + 1;
       end else if (i == 384) begin
-            if (cyphertext == expected)
+            if (ciphertext == expected)
                 $display("Testbench ran successfully");
-            else $display("Error: cyphertext = %h, expected %h",
-                cyphertext, expected);
+            else $display("Error: ciphertext = %h, expected %h",
+                ciphertext, expected);
             $stop();
       
       end

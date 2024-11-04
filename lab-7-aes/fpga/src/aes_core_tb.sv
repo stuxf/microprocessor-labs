@@ -10,10 +10,10 @@
 
 module testbench_aes_core();
     logic clk, load, done;
-    logic [127:0] key, plaintext, cyphertext, expected;
+    logic [127:0] key, plaintext, ciphertext, expected;
     
     // device under test
-    aes_core dut(clk, load, key, plaintext, done, cyphertext);
+    aes_core dut(clk, load, key, plaintext, done, ciphertext);
     
     // test case
     initial begin   
@@ -41,10 +41,10 @@ module testbench_aes_core();
     // wait until done and then check the result
     always @(posedge clk) begin
       if (done) begin
-        if (cyphertext == expected)
+        if (ciphertext == expected)
             $display("Testbench ran successfully");
-        else $display("Error: cyphertext = %h, expected %h",
-            cyphertext, expected);
+        else $display("Error: ciphertext = %h, expected %h",
+            ciphertext, expected);
         $stop();
       end
     end
