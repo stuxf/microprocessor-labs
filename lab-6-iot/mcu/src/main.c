@@ -116,6 +116,8 @@ int main(void)
   // Chip select
   pinMode(CS_PIN, GPIO_OUTPUT); // PA8
 
+  pinMode(LED_PIN, GPIO_OUTPUT);
+
   // Alternate Functions
   GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL5, 0b0101); // SDI
   GPIOB->AFR[0] |= _VAL2FLD(GPIO_AFRL_AFSEL4, 0b0101); // SDO
@@ -169,6 +171,8 @@ int main(void)
     digitalWrite(CS_PIN, 0);
 
     delay_millis(TIM15, 1000);
+
+    togglePin(LED_PIN);
 
     char tempStatusStr[63];
     sprintf(tempStatusStr, "Temp: %f degrees C, at %d bit resolution", readTemp(), resolution);
