@@ -37,6 +37,8 @@ char *webpageStart = "<!DOCTYPE html><html><head><title>E155 Temp Sensor</title>
 	<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\
 	</head>\
 	<body><h1>E155 Temp Sensor</h1>";
+char *ledStr = "<p>LED Control:</p><form action=\"ledon\"><input type=\"submit\" value=\"Turn the LED on!\"></form>\
+	<form action=\"ledoff\"><input type=\"submit\" value=\"Turn the LED off!\"></form>";
 char *tempStr = "<p>Temp Bit Control: </p><form action=\"eightbit\"><input type=\"submit\" value=\"Eight Bit Precision\"></form><form action=\"ninebit\"><input type=\"submit\" value=\"Nine Bit Precision!\"></form><form action=\"tenbit\"><input type=\"submit\" value=\"Ten Bit Precision!\"></form><form action=\"elevenbit\"><input type=\"submit\" value=\"Eleven Bit Precision!\"></form><form action=\"twelvebit\"><input type=\"submit\" value=\"Twelve Bit Precision!\"></form>";
 char *webpageEnd = "</body></html>";
 
@@ -48,6 +50,24 @@ int inString(char request[], char des[])
     return 1;
   }
   return -1;
+}
+
+int updateLEDStatus(char request[])
+{
+  int led_status = 0;
+  // The request has been received. now process to determine whether to turn the LED on or off
+  if (inString(request, "ledoff") == 1)
+  {
+    digitalWrite(LED_PIN, PIO_LOW);
+    led_status = 0;
+  }
+  else if (inString(request, "ledon") == 1)
+  {
+    digitalWrite(LED_PIN, PIO_HIGH);
+    led_status = 1;
+  }
+
+  return led_status;
 }
 
 int updateTempRes(char request[])
@@ -94,9 +114,6 @@ int main(void)
   gpioEnable(GPIO_PORT_A);
   gpioEnable(GPIO_PORT_B);
   gpioEnable(GPIO_PORT_C);
-
-  RCC->AHB2ENR |= RCC_AHB2ENR_GPIOBEN;
-  RCC->AHB2ENR |= RCC_AHB2ENR_GPIOAEN;
 
   RCC->APB2ENR |= (RCC_APB2ENR_TIM15EN);
   initTIM(TIM15);
@@ -168,6 +185,14 @@ int main(void)
 
     int resolution = updateTempRes(request);
 
+    int led_status = updateLEDStatus(request);
+
+    char ledStatusStr[20];
+    if (led_status == 1)
+      sprintf(ledStatusStr, "LED is on!");
+    else if (led_status == 0)
+      sprintf(ledStatusStr, "LED is off!");
+
     digitalWrite(CS_PIN, 0);
 
     delay_millis(TIM15, 1000);
@@ -179,7 +204,14 @@ int main(void)
 
     // finally, transmit the webpage over UART
     sendString(USART, webpageStart); // webpage header code
+    sendString(USART, ledStr);
     sendString(USART, tempStr);
+
+    sendString(USART, "<h2>LED Status</h2>");
+
+    sendString(USART, "<p>");
+    sendString(USART, ledStatusStr);
+    sendString(USART, "</p>");
 
     sendString(USART, "<h2>Temperature Status</h2>");
 
