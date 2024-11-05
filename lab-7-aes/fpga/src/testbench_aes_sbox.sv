@@ -7,7 +7,7 @@
 module testbench_aes_sbox();
     logic clk, load, done, sck, sdi, sdo;
     logic [127:0] key, plaintext, ciphertext, expected;
-	  logic [255:0] comb;
+    logic [255:0] comb;
 
     // Added delay
     logic delay;

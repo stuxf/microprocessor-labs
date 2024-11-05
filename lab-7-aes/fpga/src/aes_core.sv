@@ -1,4 +1,4 @@
-/* 
+/*
  * Stephen Xu
  * November 3rd, 2024
  * stxu@g.hmc.edu
@@ -12,7 +12,7 @@
 //   top level AES encryption module
 //   when load is asserted, takes the current key and plaintext
 //   generates ciphertext and asserts done when complete 11 cycles later
-// 
+//
 //   See FIPS-197 with Nk = 4, Nb = 4, Nr = 10
 //
 //   The key and message are 128-bit values packed into an array of 16 bytes as
@@ -26,20 +26,54 @@
 //        [127:96]  [95:64] [63:32] [31:0]      w[0]    w[1]    w[2]    w[3]
 /////////////////////////////////////////////
 
-module aes_core(input  logic         clk, 
-                input  logic         load,
-                input  logic [127:0] key, 
-                input  logic [127:0] plaintext, 
-                output logic         done, 
-                output logic [127:0] ciphertext);
+module aes_core (
+    input  logic         clk,
+    input  logic         load,
+    input  logic [127:0] key,
+    input  logic [127:0] plaintext,
+    output logic         done,
+    output logic [127:0] ciphertext
+);
 
-    // TODO: Your code goes here
+  // TODO: Your code goes here
 
-    // Controller Module
-    // SubBytes (uses sbox)
-    // ShiftRows (need to be figured out)
-    // MixCols (alr done!)
-    // AddRoundKey (supposedly easy)
-    // KeyExpansion
-    
+  typedef enum logic [2:0] {
+    r_idle,
+    r_start,
+    r_middle,
+    r_end,
+    r_done
+  } state_t;
+
+  state_t state, nextstate;
+
+  logic [1:0] counter;
+
+  always_ff @(posedge clk) begin
+    if (load) begin
+      counter <= 0;
+      state   <= r_start;
+    end else begin
+      state <= nextstate;
+    end
+  end
+
+  always_comb begin
+    case (state)
+      r_start: nextstate = r_middle;
+      r_middle: nextstate = r_end;
+      r_end: nextstate = r_done;
+      r_done: nextstate = r_done;
+      r_idle: nextstate = r_idle;
+      default: nextstate = r_idle;
+    endcase
+  end
+
+  // Controller Module (THIS ONE!)
+  // SubBytes (uses sbox)
+  // ShiftRows (need to be figured out)
+  // MixCols (alr done!)
+  // AddRoundKey (supposedly easy)
+  // KeyExpansion
+
 endmodule
