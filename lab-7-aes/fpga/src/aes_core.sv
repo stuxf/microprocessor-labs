@@ -29,15 +29,18 @@
 module aes_core (
     input  logic         clk,
     input  logic         load,
+    input  logic         reset,
     input  logic [127:0] key,
     input  logic [127:0] plaintext,
     output logic         done,
     output logic [127:0] ciphertext
 );
-
-  // TODO: Your code goes here
-
   logic [127:0] state_text = plaintext;
+  logic [127:0] prevkey, roundkey;
+  logic [127:0] sub_output;
+  logic [127:0] shift_output;
+  logic [127:0] mix_output;
+  logic [127:0] add_output;
 
   typedef enum logic [2:0] {
     r_idle,
@@ -51,41 +54,63 @@ module aes_core (
 
   logic [3:0] round;
 
+  // Need ... some number of counts to stabilize
+  logic [3:0] counter;
+
+  KeyExpansion new_key (
+      .inkey(prevkey),
+      .clk(clk),
+      .round(round),
+      .outkey(roundkey)
+  );
+
   always_ff @(posedge clk) begin
     if (load) begin
       round <= 0;
+      counter <= 0;
       state <= r_start;
+      prevkey <= key;
+      state_text <= plaintext;
     end else begin
-      state <= nextstate;
+      state   <= nextstate;
+      counter <= counter + 4'b0001;
+      // Change keys every 7 ... if not done
+      if (counter == 7 && state != r_done) begin
+        counter <= 0;
+        prevkey <= roundkey;
+        round <= round + 4'b0001;
+        state_text <= add_output;
+      end
+    end
+    if (reset) begin
+      round   <= 0;
+      state   <= r_idle;
+      prevkey <= 128'b0;
     end
   end
 
   always_comb begin
     case (state)
-      r_start: nextstate = r_middle;
-      r_middle: nextstate = r_end;
-      r_end: nextstate = r_done;
-      r_done: nextstate = r_done;
-      r_idle: nextstate = r_idle;
-      default: nextstate = r_idle;
+      r_start:  nextstate = (counter == 7) ? r_middle : r_start;
+      r_middle: nextstate = (counter == 7) ? (round == 9 ? r_end : r_middle) : r_middle;
+      r_end:    nextstate = (counter == 7) ? r_done : r_end;
+      r_done:   nextstate = r_done;
+      r_idle:   nextstate = r_idle;
+      default:  nextstate = r_idle;
     endcase
   end
-
-  // Controller Module (THIS ONE!)
-  // SubBytes (uses sbox)
-  // ShiftRows (need to be figured out)
-  // MixCols (alr done!)
-  // AddRoundKey (supposedly easy)
-  // KeyExpansion
 
   logic sub_en, shift_en, mix_en;
 
   // SubBytes is enabled for all rounds except start (middle and end)
-  assign sub_en   = (state == r_middle || state == r_end) ? 1 : 0;
+  assign sub_en = (state == r_middle || state == r_end) ? 1 : 0;
   // ShiftBytes is enabled for all rounds except start (middle and end)
   assign shift_en = (state == r_middle || state == r_end) ? 1 : 0;
   // Mix is enabled only in middle rounds
-  assign mix_en   = (state == r_middle) ? 1 : 0;
+  assign mix_en = (state == r_middle) ? 1 : 0;
+
+  // Done when state is done
+  assign done = (state == r_done);
 
   // AddRoundKey is always enabled so chilling ... (?)
 
@@ -93,28 +118,31 @@ module aes_core (
 
   // That is the job of KeyExpansion! But for our purposes we should probably modify it so that key gets generate each cycle ... seems easier
 
-  logic [127:0] sub_output;
-  logic [127:0] shift_output;
-  logic [127:0] mix_output;
-  logic [127:0] add_output;
-
-  SubBytes sub(
-    .in(state_text),
-    .clk(clk),
-    .en(sub_en),
-    .out(sub_output)
+  SubBytes sub (
+      .in (state_text),
+      .clk(clk),
+      .en (sub_en),
+      .out(sub_output)
   );
 
-  ShiftRows shift(
-    .in (sub_output),
-    .en(shift_en),
-    .out(shift_output)
+  ShiftRows shift (
+      .in (sub_output),
+      .en (shift_en),
+      .out(shift_output)
   );
 
-  mixcolumns mix(
-    .a(shift_output),
-    .en(mix_en),
-    .y(mix_output)
+  mixcolumns mix (
+      .a (shift_output),
+      .en(mix_en),
+      .y (mix_output)
   );
+
+  AddRoundKey add_key (
+      .round_key(roundkey),
+      .in(mix_output),
+      .out(add_output)
+  );
+
+  assign ciphertext = state_text;
 
 endmodule

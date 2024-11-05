@@ -19,6 +19,7 @@ module testbench_aes_spi ();
       clk,
       sck,
       sdi,
+      reset,
       sdo,
       load,
       done
