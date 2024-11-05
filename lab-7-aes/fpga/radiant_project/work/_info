@@ -1,0 +1,485 @@
+m255
+K4
+z2
+Z0 !s12c _opt1
+Z1 !s99 nomlopt
+Z2 !s12c _opt
+R1
+Z3 !s12c _opt2
+R1
+R0
+R1
+R0
+R1
+R0
+R1
+R2
+R1
+R2
+R1
+R2
+R1
+R3
+R1
+R0
+R1
+R2
+R1
+!s11f vlog 2024.2 2024.05, May 20 2024
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z4 d/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/radiant_project
+T_opt
+!s110 1730800747
+VA8oHX6nz]^J=_BOkO>2Vb0
+04 18 4 work testbench_aes_core fast 0
+=1-000ae431a4f1-6729ec6a-dd2dd-1bdc86
+R1
+!s12f OEM25U48 
+Z5 !s12b OEM100
+Z6 !s124 OEM100
+Z7 !s135 nogc
+Z8 o-quiet -auto_acc_if_foreign -work work +acc
+Z9 tCvgOpt 0
+n@_opt
+Z10 OL;O;2024.2;79
+R4
+T_opt1
+!s110 1730803626
+VWCC7EZRTS1KmESaY6X?:Q0
+Z11 04 17 4 work testbench_aes_spi fast 0
+=1-000ae431a4f1-6729f7a9-cd042-1c5e7c
+R1
+Z12 !s12f OEM25U49 
+R5
+R6
+R7
+R8
+R9
+n@_opt1
+R10
+T_opt2
+!s110 1730800603
+VliDSY6E52JKDclUzm[K@m1
+R11
+=1-000ae431a4f1-6729ebdb-a361-1bd6ce
+R1
+R12
+R5
+R6
+R7
+R8
+R9
+n@_opt2
+R10
+R4
+vAddRoundKey
+Z13 2/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/AddRoundKey.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_core.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_spi.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/galoismult.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/KeyExpansion.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/mixcolumns.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/sbox_sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/ShiftRows.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/SubBytes.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_core.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_sbox.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_spi.sv
+Z14 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
+Z15 !s110 1730800583
+!i10b 1
+!s100 A2UX1;>MK6323Q[RX^AcO1
+Iz1zTNn:7WKQBBoY@6Q08K2
+S1
+R4
+w1730783779
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/AddRoundKey.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/AddRoundKey.sv
+!i122 11
+L0 8 7
+Z16 VDg1SIo80bB@j0V0VzS_@n1
+Z17 OL;L;2024.2;79
+r1
+!s85 0
+31
+Z18 !s108 1730800583.000000
+Z19 !s107 /var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_spi.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_sbox.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_core.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/SubBytes.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/ShiftRows.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/sbox_sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/mixcolumns.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/KeyExpansion.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/galoismult.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_spi.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_core.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/AddRoundKey.sv|
+Z20 !s90 -reportprogress|300|-work|work|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/AddRoundKey.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_core.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_spi.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/galoismult.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/KeyExpansion.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/mixcolumns.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/sbox_sync.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/ShiftRows.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/SubBytes.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_core.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_sbox.sv|/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_spi.sv|
+!i113 0
+Z21 o-work work -L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+R9
+n@add@round@key
+vaes
+R13
+R14
+R15
+!i10b 1
+!s100 >jhd_>hRDdMnPFd5l?dcO0
+Ia`D:XOU4[YdL2GnOY2R8]0
+S1
+R4
+w1730799845
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes.sv
+!i122 11
+L0 15 45
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vaes_core
+R13
+R14
+R15
+!i10b 1
+!s100 ka2Dh_cdodCU]1Oln<d:d0
+I]0JP?WD`M?n<IbzFDgKhZ1
+S1
+R4
+w1730800504
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_core.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_core.sv
+!i122 11
+L0 29 119
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vaes_spi
+R13
+R14
+R15
+!i10b 1
+!s100 K<5iLOF<Kz2n323TaMW5A2
+I8N_GMGj=5dJ4]_7Z;b2CR0
+S1
+R4
+w1730799481
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_spi.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/aes_spi.sv
+!i122 11
+L0 17 32
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vgaloismult
+R13
+R14
+R15
+!i10b 1
+!s100 <nHlP0BTmjN@E8PB0Vl]60
+IRcFSiFR<k5Z3JP^6=ifHz1
+S1
+R4
+w1730784478
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/galoismult.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/galoismult.sv
+!i122 11
+L0 16 10
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vKeyExpansion
+R13
+R14
+R15
+!i10b 1
+!s100 48VWzBReg7z<z`Q5Y<dH`0
+IN^oJ1IJA743OEDEz8V:;m1
+S1
+R4
+Z22 w1730799159
+Z23 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/KeyExpansion.sv
+Z24 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/KeyExpansion.sv
+!i122 11
+L0 8 54
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+n@key@expansion
+vmixcolumn
+R13
+R14
+R15
+!i10b 1
+!s100 UkT4bmYf[^a=9LLcl]TFa1
+I=;9E3:bAD3n=cN8@V?nLG3
+S1
+R4
+Z25 w1730787743
+Z26 8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/mixcolumns.sv
+Z27 F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/mixcolumns.sv
+!i122 11
+L0 51 33
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vmixcolumns
+R13
+R14
+R15
+!i10b 1
+!s100 C4TPGY6[SK=>@fP>YR2=31
+IRnKZni@JGOmj>BYzI=IOG2
+S1
+R4
+R25
+R26
+R27
+!i122 11
+L0 16 27
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vRotWord
+R13
+R14
+R15
+!i10b 1
+!s100 3W^n9iM;7H^ko1>nUdz]V1
+IH4b@]=g;ScKk9S=ok;7[51
+S1
+R4
+R22
+R23
+R24
+!i122 11
+L0 64 6
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+n@rot@word
+vsbox_sync
+R13
+R14
+R15
+!i10b 1
+!s100 jYaBGW1:0U;07;Vj>L1?33
+IkH;??iL3Wki9aBDFWmmR`2
+S1
+R4
+w1730795627
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/sbox_sync.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/sbox_sync.sv
+!i122 11
+L0 8 17
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vShiftRows
+R13
+R14
+R15
+!i10b 1
+!s100 M;WCWT8^TPU]LJ;26P<Z91
+I<]L`fV2<`^D]gc>VZ@V`f1
+S1
+R4
+w1730794447
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/ShiftRows.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/ShiftRows.sv
+!i122 11
+L0 8 37
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+n@shift@rows
+vSubBytes
+R13
+R14
+R15
+!i10b 1
+!s100 `m@hO<K0fen`JD<H;`VgD2
+IlP6gNYOHHR<?SI1j:Dikc0
+S1
+R4
+w1730794461
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/SubBytes.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/SubBytes.sv
+!i122 11
+L0 8 93
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+n@sub@bytes
+vSubWord
+R13
+R14
+R15
+!i10b 1
+!s100 BHLnM][H:1OWf;`b8HJNz2
+IZ=hJCh@f<_WQjEdl]3I7V1
+S1
+R4
+R22
+R23
+R24
+!i122 11
+L0 71 26
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+n@sub@word
+vtestbench_aes_core
+R13
+R14
+R15
+!i10b 1
+!s100 TYVm0LLhDHGJVU>n<>Fg`2
+IAO2zokgN1`L6TZhn4`3`62
+S1
+R4
+w1730798773
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_core.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_core.sv
+!i122 11
+L0 11 51
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vtestbench_aes_sbox
+R13
+R14
+R15
+!i10b 1
+!s100 1ABDRn_mABojn=A6e1Y<h1
+I2Tf[kMY[U?V4ROVdd32zW3
+S1
+R4
+w1730784760
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_sbox.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_sbox.sv
+!i122 11
+L0 7 67
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
+vtestbench_aes_spi
+R13
+R14
+R15
+!i10b 1
+!s100 @ic8LbNk?DO@E]<S5T7Vf2
+INf>^ED33Ne5d@:czNDKcD3
+S1
+R4
+w1730800234
+8/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_spi.sv
+F/var/home/user/Dev/School/E155/microprocessor-labs/lab-7-aes/fpga/src/testbench_aes_spi.sv
+!i122 11
+L0 8 87
+R16
+R17
+r1
+!s85 0
+31
+R18
+R19
+R20
+!i113 0
+R21
+R9
