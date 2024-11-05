@@ -36,9 +36,10 @@ module aes_core(input  logic         clk,
     // TODO: Your code goes here
 
     // Controller Module
-    // subBytes (uses sbox)
-    // shiftRows (need to be figured out)
-    // mixCols (alr done!)
-    // addRoundKey (supposedly easy)
+    // SubBytes (uses sbox)
+    // ShiftRows (need to be figured out)
+    // MixCols (alr done!)
+    // AddRoundKey (supposedly easy)
+    // KeyExpansion
     
 endmodule
