@@ -43,11 +43,11 @@ module aes_core (
   logic [127:0] add_output;
 
   typedef enum logic [2:0] {
-    r_idle,
+    r_done,
     r_start,
     r_middle,
     r_end,
-    r_done
+    r_idle
   } state_t;
 
   state_t state, nextstate;

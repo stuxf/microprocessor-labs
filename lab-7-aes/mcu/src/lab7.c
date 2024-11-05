@@ -27,7 +27,7 @@ char plaintext[16] = {0x32, 0x43, 0xF6, 0xA8, 0x88, 0x5A, 0x30, 0x8D,
 char ct[16] = {0x39, 0x25, 0x84, 0x1D, 0x02, 0xDC, 0x09, 0xFB,
                0xDC, 0x11, 0x85, 0x97, 0x19, 0x6A, 0x0B, 0x32};
 
-/* 
+/*
 // Another test case from Appendix C.1
 
 char key[16] = {0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07,
@@ -44,14 +44,15 @@ char ct[16] = {0x69, 0xC4, 0xE0, 0xD8, 0x6A, 0x7B, 0x04, 0x30,
 // Function Prototypes
 ////////////////////////////////////////////////
 
-void encrypt(char*, char*, char*);
-void checkAnswer(char*, char*, char*);
+void encrypt(char *, char *, char *);
+void checkAnswer(char *, char *, char *);
 
 ////////////////////////////////////////////////
 // Main
 ////////////////////////////////////////////////
 
-int main(void) {
+int main(void)
+{
   char ciphertext[16];
 
   // Configure flash latency and set clock to run at 84 MHz
@@ -63,11 +64,10 @@ int main(void) {
   // the phase for the SPI clock is 1 and the polarity is 0
   initSPI(1, 0, 0);
 
-
   // Load and done pins
-  pinMode(PA5, GPIO_OUTPUT);  // LOAD
-  pinMode(PA6, GPIO_INPUT);   // DONE
-  
+  pinMode(PA5, GPIO_OUTPUT); // LOAD
+  pinMode(PA6, GPIO_INPUT);  // DONE
+
   // debugging LEDs
   pinMode(PA9, GPIO_OUTPUT);
   pinMode(PA10, GPIO_OUTPUT);
@@ -78,7 +78,6 @@ int main(void) {
   pinMode(PA11, GPIO_OUTPUT);
   digitalWrite(PA11, 1);
 
-
   // hardware accelerated encryption
   encrypt(key, plaintext, ciphertext);
   checkAnswer(key, plaintext, ciphertext);
@@ -88,53 +87,80 @@ int main(void) {
 // Functions
 ////////////////////////////////////////////////
 
-void checkAnswer(char * key, char * plaintext, char * ciphertext) {
+void checkAnswer(char *key, char *plaintext, char *ciphertext)
+{
+
+  printf("Received ciphertext:  ");
+  for (int i = 0; i < 16; i++)
+  {
+    printf("0x%02X ", (unsigned char)ciphertext[i]);
+  }
+  printf("\n");
+
+  printf("Expected ciphertext: ");
+  for (int i = 0; i < 16; i++)
+  {
+    printf("0x%02X ", (unsigned char)ct[i]);
+  }
+  printf("\n");
+
   // Compare Strings:
   char correct = 1;
-  for(int i = 0; i < 16; i++) {
+  for (int i = 0; i < 16; i++)
+  {
     volatile int k = ciphertext[i] - ct[i];
-    
-    if(k != 0) {
+
+    if (k != 0)
+    {
       correct = 0;
     }
   }
 
-  if(correct) {
+  if (correct)
+  {
     digitalWrite(PA9, 1); // Success!
-  } else {
-    digitalWrite(PA10, 1);    // Bummer.  Test failed.
   }
+  else
+  {
+    digitalWrite(PA10, 1); // Bummer.  Test failed.
   }
+}
 
-void encrypt(char * key, char * plaintext, char * ciphertext) {
+void encrypt(char *key, char *plaintext, char *ciphertext)
+{
   int i;
 
   // Write LOAD high
   digitalWrite(PA5, 1);
 
   // Send plaintext
-  for(i = 0; i < 16; i++) {
+  for (i = 0; i < 16; i++)
+  {
     digitalWrite(PA11, 1); // Arificial CE high
     spiSendReceive(plaintext[i]);
     digitalWrite(PA11, 0); // Arificial CE low
   }
 
   // Send the key
-  for(i = 0; i < 16; i++) {
+  for (i = 0; i < 16; i++)
+  {
     digitalWrite(PA11, 1); // Arificial CE high
     spiSendReceive(key[i]);
     digitalWrite(PA11, 0); // Arificial CE low
   }
 
-  while(SPI1->SR & SPI_SR_BSY); // Confirm all SPI transactions are completed
+  while (SPI1->SR & SPI_SR_BSY)
+    ;                   // Confirm all SPI transactions are completed
   digitalWrite(PA5, 0); // Write LOAD low
 
   // Wait for DONE signal to be asserted by FPGA signifying that the data is ready to be read out.
-  while(!digitalRead(PA6));
+  while (!digitalRead(PA6))
+    ;
 
-  for(i = 0; i < 16; i++) {
+  for (i = 0; i < 16; i++)
+  {
     digitalWrite(PA11, 1); // Arificial CE high
-    ciphertext[i] = spiSendReceive(0);  
+    ciphertext[i] = spiSendReceive(0);
     digitalWrite(PA11, 0); // Arificial CE low
   }
 }
