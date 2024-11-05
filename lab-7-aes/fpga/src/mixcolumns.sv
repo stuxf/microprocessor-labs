@@ -14,26 +14,31 @@
 /////////////////////////////////////////////
 
 module mixcolumns (
-    input  logic [127:0] a,
+    input logic [127:0] a,
+    input logic en,
     output logic [127:0] y
 );
 
+  logic [127:0] temp_out;
   mixcolumn mc0 (
       .a(a[127:96]),
-      .y(y[127:96])
+      .y(temp_out[127:96])
   );
   mixcolumn mc1 (
       .a(a[95:64]),
-      .y(y[95:64])
+      .y(temp_out[95:64])
   );
   mixcolumn mc2 (
       .a(a[63:32]),
-      .y(y[63:32])
+      .y(temp_out[63:32])
   );
   mixcolumn mc3 (
       .a(a[31:0]),
-      .y(y[31:0])
+      .y(temp_out[31:0])
   );
+
+  assign y = en ? temp_out : a;
+
 endmodule
 
 /////////////////////////////////////////////

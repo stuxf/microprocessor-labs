@@ -37,6 +37,8 @@ module aes_core (
 
   // TODO: Your code goes here
 
+  logic [127:0] state_text = plaintext;
+
   typedef enum logic [2:0] {
     r_idle,
     r_start,
@@ -47,12 +49,12 @@ module aes_core (
 
   state_t state, nextstate;
 
-  logic [1:0] counter;
+  logic [3:0] round;
 
   always_ff @(posedge clk) begin
     if (load) begin
-      counter <= 0;
-      state   <= r_start;
+      round <= 0;
+      state <= r_start;
     end else begin
       state <= nextstate;
     end
@@ -75,5 +77,44 @@ module aes_core (
   // MixCols (alr done!)
   // AddRoundKey (supposedly easy)
   // KeyExpansion
+
+  logic sub_en, shift_en, mix_en;
+
+  // SubBytes is enabled for all rounds except start (middle and end)
+  assign sub_en   = (state == r_middle || state == r_end) ? 1 : 0;
+  // ShiftBytes is enabled for all rounds except start (middle and end)
+  assign shift_en = (state == r_middle || state == r_end) ? 1 : 0;
+  // Mix is enabled only in middle rounds
+  assign mix_en   = (state == r_middle) ? 1 : 0;
+
+  // AddRoundKey is always enabled so chilling ... (?)
+
+  // We need to generate a different key to put into AddRoundKey though ... :thinking:
+
+  // That is the job of KeyExpansion! But for our purposes we should probably modify it so that key gets generate each cycle ... seems easier
+
+  logic [127:0] sub_output;
+  logic [127:0] shift_output;
+  logic [127:0] mix_output;
+  logic [127:0] add_output;
+
+  SubBytes sub(
+    .in(state_text),
+    .clk(clk),
+    .en(sub_en),
+    .out(sub_output)
+  );
+
+  ShiftRows shift(
+    .in (sub_output),
+    .en(shift_en),
+    .out(shift_output)
+  );
+
+  mixcolumns mix(
+    .a(shift_output),
+    .en(mix_en),
+    .y(mix_output)
+  );
 
 endmodule

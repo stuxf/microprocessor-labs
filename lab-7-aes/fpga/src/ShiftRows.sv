@@ -6,7 +6,6 @@
  * Shifts rows of the state array by different offsets
  */
 module ShiftRows (
-    input logic clk,
     input logic en,
     input logic [127:0] in,
     output logic [127:0] out
@@ -15,7 +14,9 @@ module ShiftRows (
   always_comb begin : blockName
     if (en) begin
       out = in;
-    end else out = in;
+    end else begin
+      out = in;
+    end
   end
   // First Row is Unchanged
 
