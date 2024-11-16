@@ -29,7 +29,6 @@
 module aes_core (
     input  logic         clk,
     input  logic         load,
-    input  logic         reset,
     input  logic [127:0] key,
     input  logic [127:0] plaintext,
     output logic         done,
@@ -43,11 +42,11 @@ module aes_core (
   logic [127:0] add_output;
 
   typedef enum logic [2:0] {
-    r_done,
+    r_idle,
     r_start,
     r_middle,
     r_end,
-    r_idle
+    r_done
   } state_t;
 
   state_t state, nextstate;
@@ -81,11 +80,6 @@ module aes_core (
         round <= round + 4'b0001;
         state_text <= add_output;
       end
-    end
-    if (reset) begin
-      round   <= 0;
-      state   <= r_idle;
-      prevkey <= 128'b0;
     end
   end
 

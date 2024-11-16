@@ -25,9 +25,7 @@ module aes (
     logic clk;
 
     // Clk running 6 MHz
-    HSOSC #(
-        .CLKHF_DIV("0b11")
-    ) OSCInst1 (
+    HSOSC OSCInst1 (
         // Enable low speed clock output
         .CLKHFEN(1'b1),
         // Power up the oscillator
@@ -52,7 +50,6 @@ module aes (
       .load(load),
       .key(key),
       .plaintext(plaintext),
-      .reset(reset),
       .done(done),
       .ciphertext(ciphertext)
   );
